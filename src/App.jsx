@@ -1,10 +1,10 @@
-import Navbar from "@/components/common/Navbar";
-import { Router } from "./Router";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./Router";
 
 function App() {
   return (
     <>
-      <Router />
+      <RouterProvider router={router} />
     </>
   );
 }
