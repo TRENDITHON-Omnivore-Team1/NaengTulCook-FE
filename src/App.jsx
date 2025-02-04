@@ -1,12 +1,10 @@
 import Navbar from "@/components/common/Navbar";
+import { Router } from "./Router";
 
 function App() {
   return (
     <>
-      <p>
-        <Navbar />
-        냉털쿡
-      </p>
+      <Router />
     </>
   );
 }
