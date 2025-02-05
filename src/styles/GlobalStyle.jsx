@@ -71,6 +71,25 @@ export const GlobalStyle = createGlobalStyle`
       font-style: normal;
   }
 
+  @font-face {
+    font-family: 'Giants'; 
+    src: url('src/assets/fonts/Giants-Regular.otf') format('opentype'); 
+    font-weight: 400; 
+    font-style: normal; 
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Giants';
+    src: url('src/assets/fonts/Giants-Bold.otf') format('opentype'); 
+    font-weight: 700; 
+    font-style: normal; 
+    font-display: swap;
+  }
+
+  
+
+
   body {
     font-family: 'Pretendard', sans-serif;
   }
