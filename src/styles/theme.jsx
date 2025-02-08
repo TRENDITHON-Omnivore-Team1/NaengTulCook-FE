@@ -1,8 +1,42 @@
-//색상 정의
+function FONT({ family, weight, size }) {
+  return `
+    font-family: ${family}, sans-serif;
+    font-weight: ${weight};
+    font-size: ${size}px;
+  `;
+}
+
 export const theme = {
   colors: {
-      primary: "#1D1D1D", // 메인 색상
-      secondary: "#FFF", // 서브 색상
-     
+    // grayscale_1d: "#1D1D1D",
+    // grayscale_5f: "#5F5F5F",
+    // grayscale_7d: "#7D7D7D",
+    // grayscale_88: "#888888",
+    // grayscale_a6: "#A6A6A6",
+    // grayscale_aa: "#AAAAAA",
+    // grayscale_bc: "#BCBCBC",
+    // grayscale_d9: "#D9D9D9",
+    // grayscale_de: "#DEDEDE",
+    // grayscale_e7: "#E7E7E7",
+    // grayscale_e9: "#E9E9E9",
+    // grayscale_f6: "#F6F6F6",
+
+    state_red: "#FF0000",
+    state_blue: "#038EFF",
+    state_yellow: "#FF9500",
+    // green: "#00EA1F",
+
+    error: "#FC3200",
+
+    primary: "#1D1D1D", // 메인 색상
+    secondary: "#FFF", // 서브 색상
+  },
+  fonts: {
+    // thin(1), extralight(2), light(3), regular(4), medium(5), semibold(6), bold(7), extrabold(8), black(9)
+
+    pre_semibold_16: FONT({ family: "Pretendard", weight: 600, size: 16 }),
+    pre_bold_18: FONT({ family: "Pretendard", weight: 700, size: 18 }),
+
+    gi_regular_13: FONT({ family: "Giants", weight: 400, size: 13 }),
   },
 };
