@@ -38,6 +38,6 @@ export const IconImg = styled.img`
   color: #aaa;
 `;
 export const NavText = styled.p`
-  color: #aaaaaa;
+  color: ${({ $isActive }) => ($isActive ? "#000" : "#aaaaaa")};
   ${theme.fonts.gi_regular_13}
 `;
