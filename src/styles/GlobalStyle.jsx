@@ -107,11 +107,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   #root {
-    box-shadow: rgba(100, 100, 111, 0.5) 0 7px 29px 0;
+    box-shadow: rgba(100, 100, 112, 0.2) 0 0 30px 0;
     margin: 0 auto;
     min-height: 100vh;
     position: relative;
   }
+  /* ::-webkit-scrollbar{
+    display: none;
+  } */
 
   li{
     list-style: none;
