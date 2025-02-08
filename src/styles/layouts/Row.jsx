@@ -45,6 +45,10 @@ const RowCSS = (props) => css`
   })()};
 `;
 
+export const RowCenterCSS = css`
+  ${RowCSS({ verticalAlign: "center", horizonAlign: "center" })}
+`;
+
 const Row = styled.div`
   ${(props) => RowCSS(props)}
 `;

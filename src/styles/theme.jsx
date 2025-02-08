@@ -38,5 +38,7 @@ export const theme = {
     pre_bold_18: FONT({ family: "Pretendard", weight: 700, size: 18 }),
 
     gi_regular_13: FONT({ family: "Giants", weight: 400, size: 13 }),
+    gi_bold_20: FONT({ family: "Giants", weight: 700, size: 20 }),
+    gi_bold_22: FONT({ family: "Giants", weight: 700, size: 22 }),
   },
 };

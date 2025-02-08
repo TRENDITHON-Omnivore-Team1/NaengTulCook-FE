@@ -46,6 +46,10 @@ const ColumnCSS = (props) => css`
   })()};
 `;
 
+export const ColumnCenterCSS = css`
+  ${ColumnCSS({ verticalAlign: "center", horizonAlign: "center" })}
+`;
+
 const Column = styled.div`
   ${(props) => ColumnCSS(props)}
 `;
