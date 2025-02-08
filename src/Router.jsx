@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
     // errorElement: <NotFound />,
     children: [
       {
-        path: "refrigerator",
+        path: "refrigerator", // 냉장고 페이지
         element: <Outlet />,
         children: [
           {
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: "recipe",
+        path: "recipe", // 레시피 페이지
         element: <Outlet />,
         children: [
           {
@@ -58,11 +58,11 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "community",
+        path: "community", // 이웃의 장 페이지
         element: <CommunityPage />,
       },
       {
-        path: "my-page",
+        path: "my-page", //내 정보 페이지
         element: <MyPage />,
       },
     ],
