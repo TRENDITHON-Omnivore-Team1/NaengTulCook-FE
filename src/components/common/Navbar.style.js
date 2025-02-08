@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { theme } from "../../styles/theme";
 
 export const CompContainer = styled.div`
   position: absolute;
@@ -28,9 +29,10 @@ export const NavButton = styled.button`
   border: none;
   border-radius: 8px;
   background-color: transparent;
-  transition: transform 0.5s ease;
+  transition: background-color 0.3s ease;
+
   &:hover {
-    background-color: #efefef;
+    background-color: #f6f6f6;
   }
 `;
 export const IconImg = styled.img`
@@ -38,7 +40,5 @@ export const IconImg = styled.img`
 `;
 export const NavText = styled.p`
   color: #aaaaaa;
-  font-family: Giants;
-  font-size: 13px;
-  font-weight: 400;
+  ${theme.fonts.gi_regular_13}
 `;
