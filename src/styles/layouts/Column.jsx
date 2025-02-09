@@ -1,57 +1,42 @@
 import styled, { css } from "styled-components";
 
-const ColumnCSS = (props) => css`
+export const ColumnCenterCSS = css`
   display: flex;
   flex-direction: column;
-  align-items: ${(() => {
-    if (props?.verticalAlign) {
-      switch (props.verticalAlign) {
-        case "center":
-          return "center";
-        case "top":
-          return "flex-start";
-        case "bottom":
-          return "flex-end";
-        default:
-          return "flex-start";
-      }
-    } else {
-      return "flex-start";
-    }
-  })()};
-  justify-content: ${(() => {
-    if (props?.horizonAlign) {
-      switch (props.horizonAlign) {
-        case "center":
-          return "center";
-        case "left":
-          return "flex-start";
-        case "right":
-          return "flex-end";
-        case "distribute":
-          return "space-between";
-        default:
-          return "flex-start";
-      }
-    } else {
-      return "flex-start";
-    }
-  })()};
-  gap: ${(() => {
-    if (props?.gap) {
-      return `${props.gap}px`;
-    } else {
-      return 0;
-    }
-  })()};
+  align-items: center;
+  justify-content: center;
 `;
 
-export const ColumnCenterCSS = css`
-  ${ColumnCSS({ verticalAlign: "center", horizonAlign: "center" })}
+const ColumnCSS = css`
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ verticalAlign }) =>
+    verticalAlign === "center"
+      ? "center"
+      : verticalAlign === "top"
+      ? "flex-start"
+      : verticalAlign === "bottom"
+      ? "flex-end"
+      : "flex-start"};
+
+  justify-content: ${({ horizonAlign }) =>
+    horizonAlign === "center"
+      ? "center"
+      : horizonAlign === "left"
+      ? "flex-start"
+      : horizonAlign === "right"
+      ? "flex-end"
+      : horizonAlign === "distribute"
+      ? "space-between"
+      : horizonAlign === "between"
+      ? "space-between"
+      : "flex-start"};
+
+  gap: ${({ gap }) => (gap ? `${gap}px` : "0")};
 `;
 
 const Column = styled.div`
-  ${(props) => ColumnCSS(props)}
+  ${ColumnCSS}
 `;
 
 export default Column;

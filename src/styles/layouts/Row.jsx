@@ -1,56 +1,40 @@
 import styled, { css } from "styled-components";
 
-const RowCSS = (props) => css`
+export const RowCenterCSS = css`
   display: flex;
-  align-items: ${(() => {
-    if (props?.verticalAlign) {
-      switch (props.verticalAlign) {
-        case "center":
-          return "center";
-        case "top":
-          return "flex-start";
-        case "bottom":
-          return "flex-end";
-        default:
-          return "flex-start";
-      }
-    } else {
-      return "flex-start";
-    }
-  })()};
-  justify-content: ${(() => {
-    if (props?.horizonAlign) {
-      switch (props.horizonAlign) {
-        case "center":
-          return "center";
-        case "left":
-          return "flex-start";
-        case "right":
-          return "flex-end";
-        case "distribute":
-          return "space-between";
-        default:
-          return "flex-start";
-      }
-    } else {
-      return "flex-start";
-    }
-  })()};
-  gap: ${(() => {
-    if (props?.gap) {
-      return `${props.gap}px`;
-    } else {
-      return 0;
-    }
-  })()};
+  align-items: center;
+  justify-content: center;
 `;
 
-export const RowCenterCSS = css`
-  ${RowCSS({ verticalAlign: "center", horizonAlign: "center" })}
+const RowCSS = css`
+  display: flex;
+  align-items: ${({ verticalAlign }) =>
+    verticalAlign === "center"
+      ? "center"
+      : verticalAlign === "top"
+      ? "flex-start"
+      : verticalAlign === "bottom"
+      ? "flex-end"
+      : "flex-start"};
+
+  justify-content: ${({ horizonAlign }) =>
+    horizonAlign === "center"
+      ? "center"
+      : horizonAlign === "left"
+      ? "flex-start"
+      : horizonAlign === "right"
+      ? "flex-end"
+      : horizonAlign === "distribute"
+      ? "space-between"
+      : horizonAlign === "between"
+      ? "space-between"
+      : "flex-start"};
+
+  gap: ${({ gap }) => (gap ? `${gap}px` : "0")};
 `;
 
 const Row = styled.div`
-  ${(props) => RowCSS(props)}
+  ${RowCSS}
 `;
 
 export default Row;
