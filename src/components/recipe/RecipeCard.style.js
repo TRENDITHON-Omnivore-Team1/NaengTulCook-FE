@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const CompContainer = styled.div`
   width: 78%;
-  margin: 20px; // 나중에 삭제
+  margin: 40px; // 나중에 삭제
   max-width: 500px;
 
   border-radius: 12px;
@@ -15,6 +15,7 @@ export const CompContainer = styled.div`
   align-items: center;
 `;
 export const ImgContainer = styled.div`
+  position: relative;
   width: 100%;
   height: 38vh;
   overflow: hidden;
@@ -25,8 +26,22 @@ export const ThumbnailImg = styled.img`
 
   object-fit: cover;
 `;
-export const CardTitle = styled.div`
+export const OverlayGradation = styled.div`
+  position: absolute;
+  top: 0;
+
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: linear-gradient(180deg, rgba(231, 29, 29, 0) 72%, #fff 100%);
+`;
+// 여기부터 내용
+export const CardSubtitle = styled.div`
   margin-top: 20px;
+  ${(props) => props.theme.fonts.pre_medium_14}
+`;
+export const CardTitle = styled.div`
+  margin-top: 4px;
   ${(props) => props.theme.fonts.pre_extrabold_30}
 `;
 export const ChipItem = styled.div`
