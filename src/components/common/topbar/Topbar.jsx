@@ -2,11 +2,12 @@ import * as A from "./Topbar.style";
 import dropdownSvg from "@/assets/icons/icon_dropdown.svg";
 import checkSvg from "@/assets/icons/icon_check.svg";
 import { useState } from "react";
+import { BackgroundDarkOverlay } from "@/styles/common/CommonStyleComp";
 
 function DropdownComp({ optionList, currentIndex, setCurrentIndex, setIsOpened }) {
   return (
     <>
-      <A.BackgroundDark />
+      <BackgroundDarkOverlay />
       <A.DropdownContainer>
         {optionList.map((option, i) => (
           <A.TextButton onClick={() => setCurrentIndex(i)} $isActive={i == currentIndex} key={i}>

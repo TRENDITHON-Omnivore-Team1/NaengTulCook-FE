@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { theme } from "../../../styles/theme";
 import { RowCenterCSS } from "@/styles/layouts/Row";
 import { ColumnCenterCSS } from "@/styles/layouts/Column";
 
@@ -34,16 +33,6 @@ export const IconImg = styled.img`
 `;
 
 // 드롭다운
-export const BackgroundDark = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 40;
-
-  background-color: rgba(0, 0, 0, 0.66);
-`;
 export const DropdownContainer = styled.div`
   position: absolute;
   top: 0;
