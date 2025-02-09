@@ -1,3 +1,4 @@
+import FloatingButton from "@/components/common/button/floating/FloatingButton";
 import Topbar from "../components/common/topbar/Topbar";
 import RecipeCard from "@/components/recipe/RecipeCard";
 
@@ -8,6 +9,7 @@ export default function RecipePage() {
     <>
       <Topbar optionList={optionList} />
       <RecipeCard />
+      <FloatingButton />
     </>
   );
 }

@@ -21,7 +21,7 @@ export const ButtonArea = styled.button`
   ${RowCenterCSS}
 
   padding: 12px 20px;
-  ${theme.fonts.gi_bold_22}
+  ${(props) => props.theme.fonts.gi_bold_22}
 
   background-color: transparent;
   border: none;
@@ -62,7 +62,7 @@ export const TextButton = styled.button`
   width: 100%;
 
   color: ${({ $isActive }) => ($isActive ? "#1d1d1d" : "#aaaaaa")};
-  ${theme.fonts.gi_bold_20}
+  ${(props) => props.theme.fonts.gi_bold_20}
 
   border: none;
   border-bottom: 1px solid #f5f5f5;
