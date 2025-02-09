@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { theme } from "@/styles/theme";
 
 export const CompContainer = styled.div`
   position: fixed;
@@ -39,5 +38,5 @@ export const IconImg = styled.img`
 `;
 export const NavText = styled.p`
   color: ${({ $isActive }) => ($isActive ? "#000" : "#aaaaaa")};
-  ${theme.fonts.gi_regular_13}
+  ${(props) => props.theme.fonts.gi_regular_13}
 `;

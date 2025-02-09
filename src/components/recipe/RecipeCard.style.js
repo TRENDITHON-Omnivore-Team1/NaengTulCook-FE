@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
-import { theme } from "@/styles/theme";
 
 export const CompContainer = styled.div`
   width: 78%;
-  margin: 20px; //
+  margin: 20px; // 나중에 삭제
   max-width: 500px;
 
   border-radius: 12px;
@@ -28,7 +27,7 @@ export const ThumbnailImg = styled.img`
 `;
 export const CardTitle = styled.div`
   margin-top: 20px;
-  ${theme.fonts.pre_extrabold_30}
+  ${(props) => props.theme.fonts.pre_extrabold_30}
 `;
 export const ChipItem = styled.div`
   margin-top: 24px;
@@ -36,8 +35,8 @@ export const ChipItem = styled.div`
   border-radius: 50vh;
   background: rgba(3, 142, 255, 0.09);
 
-  color: ${theme.colors.state_blue};
-  ${theme.fonts.pre_medium_13}
+  color: ${(props) => props.theme.colors.state_blue};
+  ${(props) => props.theme.fonts.pre_medium_13}
 `;
 export const InfoChip = styled.div`
   margin-top: 18px;
@@ -51,7 +50,7 @@ export const RecipeButton = styled.button`
   width: calc(100% - 64px);
 
   color: #fff;
-  ${theme.fonts.pre_semibold_16}
+  ${(props) => props.theme.fonts.pre_semibold_16}
 
   border-radius: 50vh;
   background: #1d1d1d;
