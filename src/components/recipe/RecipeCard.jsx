@@ -7,9 +7,10 @@ export default function RecipeCard() {
       <A.CompContainer>
         <A.ImgContainer>
           <A.ThumbnailImg src="http://test.api.weniv.co.kr/asset/img/7/thumbnailImg.jpg" alt="" />
+          <A.OverlayGradation />
         </A.ImgContainer>
-        {/* 디자인 논의 필요 */}
-        <A.CardTitle>누가비벼도 맛있는 비빔국수</A.CardTitle>
+        <A.CardSubtitle>누가비벼도 맛있는</A.CardSubtitle>
+        <A.CardTitle>비빔국수</A.CardTitle>
         <Row gap={5}>
           {/* 수정 예정 */}
           <A.ChipItem>국수</A.ChipItem>

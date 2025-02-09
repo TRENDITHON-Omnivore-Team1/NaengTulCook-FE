@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { theme } from "../../../styles/theme";
 import { RowCenterCSS } from "@/styles/layouts/Row";
 import { ColumnCenterCSS } from "@/styles/layouts/Column";
 
@@ -21,7 +20,7 @@ export const ButtonArea = styled.button`
   ${RowCenterCSS}
 
   padding: 12px 20px;
-  ${theme.fonts.gi_bold_22}
+  ${(props) => props.theme.fonts.gi_bold_22}
 
   background-color: transparent;
   border: none;
@@ -34,16 +33,6 @@ export const IconImg = styled.img`
 `;
 
 // 드롭다운
-export const BackgroundDark = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 40;
-
-  background-color: rgba(0, 0, 0, 0.66);
-`;
 export const DropdownContainer = styled.div`
   position: absolute;
   top: 0;
@@ -62,7 +51,7 @@ export const TextButton = styled.button`
   width: 100%;
 
   color: ${({ $isActive }) => ($isActive ? "#1d1d1d" : "#aaaaaa")};
-  ${theme.fonts.gi_bold_20}
+  ${(props) => props.theme.fonts.gi_bold_20}
 
   border: none;
   border-bottom: 1px solid #f5f5f5;
