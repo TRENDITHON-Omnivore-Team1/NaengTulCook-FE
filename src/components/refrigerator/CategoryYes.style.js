@@ -1,9 +1,7 @@
 import { styled } from "styled-components";
-// import slide from '../../assets/refrigerator/slide.svg'
-
 
 export const CateWrapper = styled.div`
-  margin-bottom: ${(props) => (props.category === '식재료' ? '40px' : '0')};
+  margin-bottom: ${(props) => (props.$category === '식재료' ? '40px' : '0')};
   
   .slick-dots li{
     margin:0;
@@ -53,3 +51,9 @@ export const ItemText = styled.p`
   margin:5px 0;
   text-align:center;
 `;
+
+export const PlusImg = styled.img`
+  width:100%;
+  aspect-ratio:1;
+  cursor:pointer;
+`
