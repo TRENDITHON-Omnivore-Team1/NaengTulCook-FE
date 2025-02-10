@@ -26,6 +26,8 @@ export const DeleteText = styled.p`
   text-decoration-thickness: auto;
   text-underline-offset: auto;
   text-underline-position: from-font;
+
+  cursor:pointer;
 `;
 export const ItemContainer =styled.div`
 
@@ -37,6 +39,7 @@ export const ItemImageContainer =styled.div`
   width: 100%;
   /* height:60px; */
   aspect-ratio: 1;
+  position:relative;
 `;
 export const ItemImage = styled.img`
   width: 100%;      
@@ -51,9 +54,28 @@ export const ItemText = styled.p`
   margin:5px 0;
   text-align:center;
 `;
-
 export const PlusImg = styled.img`
   width:100%;
   aspect-ratio:1;
   cursor:pointer;
 `
+export const ButtonContainer =styled.div`
+  display:flex;
+  align-items:center;
+  gap: 30px;
+`;
+export const CancelButton =styled.div`
+  ${({theme})=>theme.fonts.pre_semibold_14}
+  color: #D9D9D9;
+  cursor:pointer;
+`;
+export const CompleteButton =styled.div`
+  ${({theme})=>theme.fonts.pre_semibold_14}
+  color: #1D1D1D;
+  cursor:pointer;
+`;
+export const DeleteImg =styled.img`
+  position:absolute;
+  top:-4px;
+  right:-4px;
+`;

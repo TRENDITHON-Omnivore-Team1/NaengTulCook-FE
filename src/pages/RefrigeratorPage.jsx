@@ -2,8 +2,6 @@ import Topbar from "@/components/common/topbar/Topbar";
 import { styled } from "styled-components";
 import CategoryNo from "@/components/refrigerator/CategoryNo";
 import CategoryYes from "@/components/refrigerator/CategoryYes";
-import { useNavigate } from "react-router-dom";
-
 
 const ingredient = [
   {
@@ -116,14 +114,14 @@ export const RefriWrapper = styled.div`
 `;
 
 export default function RefrigeratorPage() {
-  const navigate=useNavigate()
+  
 
   return (
     <>
       <Topbar pageTitle="나의 냉장고" />
       <RefriWrapper>
         {ingredient.length > 0 ? (
-          <CategoryYes category='식재료' ingredient={ingredient} navigate={navigate}/>
+          <CategoryYes category='식재료' ingredient={ingredient} />
         ) : (
           <CategoryNo category="식재료" marginBottom="120px" />
         )}

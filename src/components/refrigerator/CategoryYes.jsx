@@ -3,10 +3,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import plus_gray from '@/assets/refrigerator/plus_gray.svg';
+import minus from '@/assets/refrigerator/minus.svg'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function CategoryYes({ category, ingredient,navigate }) {
+
+export default function CategoryYes({ category, ingredient}) {
   const plusIngrident = [{ ingredient_id: 0, name: '+', picture: plus_gray }, ...ingredient];
-  console.log(navigate)
+  const [isDeleteMode, setIsDeleteMode] = useState(false);
+  const navigate = useNavigate()
+  console.log(isDeleteMode)
+
   const settings = {
     dots: true,
     infinite: true,
@@ -20,12 +27,28 @@ export default function CategoryYes({ category, ingredient,navigate }) {
     groupedItems.push(plusIngrident.slice(i, i + 12));
   }
 
+  const handleComplete =()=>{
+    setIsDeleteMode(false)
+  }
 
   return (
     <S.CateWrapper $category={category}>
       <S.CateHeader>
-        <S.CateName>{category}</S.CateName>
-        <S.DeleteText>삭제하기</S.DeleteText>
+
+        {!isDeleteMode ? (
+          <>
+            <S.CateName>{category}</S.CateName>
+            <S.DeleteText onClick={() => setIsDeleteMode(true)}>삭제하기</S.DeleteText>
+          </>
+         ) : (
+          <>
+            <S.CateName>삭제할 재료를 선택해주세요</S.CateName>
+            <S.ButtonContainer>
+              <S.CancelButton onClick={()=>{setIsDeleteMode(false)}}>취소</S.CancelButton>
+              <S.CompleteButton onClick={handleComplete}>완료</S.CompleteButton>
+            </S.ButtonContainer>
+          </>
+        )}
       </S.CateHeader>
       <Slider {...settings}>
         {groupedItems.map((group, index) => (
@@ -55,6 +78,12 @@ export default function CategoryYes({ category, ingredient,navigate }) {
                           src={item.picture}
                           alt={item.name}
                         />
+                        {isDeleteMode &&
+                        <S.DeleteImg 
+                          src={minus}
+                          alt="alt"
+                        ></S.DeleteImg>
+                        }
                       </S.ItemImageContainer>
                       <S.ItemText>{item.name}</S.ItemText>
                     </>
