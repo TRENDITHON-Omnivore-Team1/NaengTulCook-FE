@@ -1,9 +1,8 @@
 import { styled } from "styled-components";
 
-export const RefriWrapper = styled.div`
-  padding: 30px 30px 100px;
-`;
+export const CateWrapper=styled.div`
 
+`;
 export const Pre_bold_20 = styled.p`
  ${({ theme }) => theme.fonts.pre_bold_20};
 `;
