@@ -11,8 +11,10 @@ import { useNavigate } from "react-router-dom";
 export default function CategoryYes({ category, ingredient}) {
   const plusIngrident = [{ ingredient_id: 0, name: '+', picture: plus_gray }, ...ingredient];
   const [isDeleteMode, setIsDeleteMode] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]); // 선택된 아이템 이름 저장
   const navigate = useNavigate()
-  console.log(isDeleteMode)
+  // console.log(isDeleteMode)
+  console.log(selectedItems)
 
   const settings = {
     dots: true,
@@ -27,9 +29,22 @@ export default function CategoryYes({ category, ingredient}) {
     groupedItems.push(plusIngrident.slice(i, i + 12));
   }
 
+  const handleCancel =()=>{
+    setIsDeleteMode(false)
+    setSelectedItems([])
+  }
+
   const handleComplete =()=>{
     setIsDeleteMode(false)
   }
+
+  const handleItemClick = (name) => {
+    if (selectedItems.includes(name)) {
+      setSelectedItems(selectedItems.filter((itemName) => itemName !== name)); // 선택 해제
+    } else {
+      setSelectedItems([...selectedItems, name]); // 선택 추가
+    }
+  };
 
   return (
     <S.CateWrapper $category={category}>
@@ -44,7 +59,7 @@ export default function CategoryYes({ category, ingredient}) {
           <>
             <S.CateName>삭제할 재료를 선택해주세요</S.CateName>
             <S.ButtonContainer>
-              <S.CancelButton onClick={()=>{setIsDeleteMode(false)}}>취소</S.CancelButton>
+              <S.CancelButton onClick={handleCancel}>취소</S.CancelButton>
               <S.CompleteButton onClick={handleComplete}>완료</S.CompleteButton>
             </S.ButtonContainer>
           </>
@@ -73,17 +88,12 @@ export default function CategoryYes({ category, ingredient}) {
                     />
                   ) : (
                     <>
-                      <S.ItemImageContainer>
-                        <S.ItemImage
-                          src={item.picture}
-                          alt={item.name}
-                        />
-                        {isDeleteMode &&
-                        <S.DeleteImg 
-                          src={minus}
-                          alt="alt"
-                        ></S.DeleteImg>
-                        }
+                      <S.ItemImageContainer onClick={() => isDeleteMode && handleItemClick(item.name)}>
+                        <S.ItemImage src={item.picture} alt={item.name} $isDeleteMode={isDeleteMode} />
+                        {isDeleteMode && !selectedItems.includes(item.name) && ( 
+                          <S.DeleteImg src={minus} alt="minus" />
+                        )}
+                        {isDeleteMode && selectedItems.includes(item.name) && <S.RedOverlay />}
                       </S.ItemImageContainer>
                       <S.ItemText>{item.name}</S.ItemText>
                     </>
