@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function SignUp() {
   const navigate = useNavigate();
 
-  const handleMoveToSignUp = () => {
-    navigate(`/sign-up`);
+  const handleMoveToLogin = () => {
+    navigate(`/login`);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("로그인되었습니다");
+    console.log("회원가입되었습니다");
 
     // navigate(`/refrigerator`);
   };
@@ -19,9 +19,10 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <input type="text" />
         <input type="password" />
-        <button type="submit">로그인</button>
+        <input type="password" />
+        <button type="submit">가입하기</button>
       </form>
-      <button onClick={handleMoveToSignUp}>가입하기</button>
+      <button onClick={handleMoveToLogin}>로그인하기</button>
     </>
   );
 }
