@@ -46,7 +46,19 @@ export const ItemImage = styled.img`
   height: 100%;      
   object-fit: cover; 
   border-radius:12px;
+  
+  ${({ $isDeleteMode }) => $isDeleteMode && "cursor: pointer;"}
 `;
+export const RedOverlay =styled.div`
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  aspect-ratio:1;
+  border-radius:12px;
+  background: rgba(255, 81, 81, 0.28);
+`;
+
 export const ItemText = styled.p`
   color: #AAA;
   ${({theme})=>theme.fonts.pre_medium_13};
