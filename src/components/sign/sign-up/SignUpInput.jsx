@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 
 export default function SignUpInput() {
   const schema = yup.object().shape({
@@ -26,11 +27,36 @@ export default function SignUpInput() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data) => {
-    console.log("회원가입되었습니다");
-    console.log(data);
+  // 추후 api 리팩토링 필요
+  const api = axios.create({
+    baseURL: "http://13.211.69.139:8080",
+  });
 
-    // navigate(`/login`);
+  async function signUpUser({ id, password }) {
+    try {
+      console.log("회원가입 id: ", id, "pw: ", password); // 로그는 나중에 삭제!!
+
+      const response = await api.post("/api/users/signup", {
+        userIdentifier: id,
+        password: password,
+      });
+
+      console.log(response.data); // 로그는 나중에 삭제!!
+      return true;
+    } catch (error) {
+      console.error("회원가입 실패: ", error.response?.data || error.message);
+      return false;
+    }
+  }
+
+  const onSubmit = async (data) => {
+    const isSuccess = await signUpUser({ id: data.id, password: data.password });
+
+    if (isSuccess) {
+      navigate(`/login`);
+    } else {
+      console.log("회원가입 실패^-^"); // 로그는 나중에 삭제!!
+    }
   };
 
   const handleMoveToLogin = () => {
