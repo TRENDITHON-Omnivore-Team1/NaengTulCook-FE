@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function LoginInput() {
   const navigate = useNavigate();
 
   const handleMoveToSignUp = () => {
@@ -17,8 +17,8 @@ export default function Login() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text" />
-        <input type="password" />
+        <input type="text" placeholder="아이디" />
+        <input type="password" placeholder="비밀번호" />
         <button type="submit">로그인</button>
       </form>
       <button onClick={handleMoveToSignUp}>가입하기</button>
