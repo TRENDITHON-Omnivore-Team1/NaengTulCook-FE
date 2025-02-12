@@ -1,8 +1,13 @@
-import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
+
+// 추후 api 리팩토링 필요
+const api = axios.create({
+  baseURL: "http://13.211.69.139:8080",
+});
 
 export default function SignUpInput() {
   const schema = yup.object().shape({
@@ -27,15 +32,8 @@ export default function SignUpInput() {
     resolver: yupResolver(schema),
   });
 
-  // 추후 api 리팩토링 필요
-  const api = axios.create({
-    baseURL: "http://13.211.69.139:8080",
-  });
-
   async function signUpUser({ id, password }) {
     try {
-      console.log("회원가입 id: ", id, "pw: ", password); // 로그는 나중에 삭제!!
-
       const response = await api.post("/api/users/signup", {
         userIdentifier: id,
         password: password,
@@ -54,8 +52,6 @@ export default function SignUpInput() {
 
     if (isSuccess) {
       navigate(`/login`);
-    } else {
-      console.log("회원가입 실패^-^"); // 로그는 나중에 삭제!!
     }
   };
 
@@ -67,13 +63,13 @@ export default function SignUpInput() {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input type="text" {...register("id")} placeholder="아이디" />
-        <span>{errors.id?.message}</span>
+        <span style={{ color: "red" }}>{errors.id?.message}</span>
         <br />
         <input type="password" {...register("password")} placeholder="비밀번호" />
-        <span>{errors.password?.message}</span>
+        <span style={{ color: "red" }}>{errors.password?.message}</span>
         <br />
         <input type="password" {...register("passwordCheck")} placeholder="비밀번호 확인" />
-        <span>{errors.passwordCheck?.message}</span>
+        <span style={{ color: "red" }}>{errors.passwordCheck?.message}</span>
         <br />
         <button type="submit">가입하기</button>
       </form>
