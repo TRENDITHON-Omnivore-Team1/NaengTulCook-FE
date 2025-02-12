@@ -2,15 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
-
-// 추후 api 리팩토링 필요
-const api = axios.create({
-  baseURL: "http://13.211.69.139:8080",
-});
+import { postSignUp } from "@/apis/sign/postSignUp";
+import { useState } from "react";
 
 export default function SignUpInput() {
-  const schema = yup.object().shape({
+  const schema = yup.object({
     id: yup.string().required("아이디를 반드시 입력해주세요."),
     password: yup
       .string()
@@ -31,27 +27,17 @@ export default function SignUpInput() {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  async function signUpUser({ id, password }) {
-    try {
-      const response = await api.post("/api/users/signup", {
-        userIdentifier: id,
-        password: password,
-      });
-
-      console.log(response.data); // 로그는 나중에 삭제!!
-      return true;
-    } catch (error) {
-      console.error("회원가입 실패: ", error.response?.data || error.message);
-      return false;
-    }
-  }
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onSubmit = async (data) => {
-    const isSuccess = await signUpUser({ id: data.id, password: data.password });
+    try {
+      await postSignUp({
+        body: { userIdentifier: data.id, password: data.password },
+      });
 
-    if (isSuccess) {
       navigate(`/login`);
+    } catch (error) {
+      setErrorMessage(error.message);
     }
   };
 
@@ -71,6 +57,7 @@ export default function SignUpInput() {
         <input type="password" {...register("passwordCheck")} placeholder="비밀번호 확인" />
         <span style={{ color: "red" }}>{errors.passwordCheck?.message}</span>
         <br />
+        {errorMessage && <span style={{ color: "red" }}>{errorMessage}</span>}
         <button type="submit">가입하기</button>
       </form>
       <button onClick={handleMoveToLogin}>로그인하기</button>
