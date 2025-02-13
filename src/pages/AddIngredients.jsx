@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
-import  axios  from "axios"
+import axios from 'axios'
+import {postIngredient} from "@/apis/refrigerator/postIngredient"
 import * as S from "@/components/refrigerator/AddIngredients.style"
 import previusArrow from "@/assets/refrigerator/previousArrow.svg"
 import magnifierCircle from "@/assets/refrigerator/magnifierCircle.svg"
 import magnifierStick from "@/assets/refrigerator/magnifierStick.svg"
 import plus_add from "@/assets/refrigerator/plus_add.svg"
+import check from "@/assets/refrigerator/check.svg"
 
 const typeArr = ['전체', '가공/유제품', '채소', '육류', '해산물', '곡물', '과일', '조미료', '냉동식품']
 
@@ -42,7 +44,7 @@ export default function AddIngredients() {
   const navigate = useNavigate();
   // console.log(searchName)
   // console.log(selectedType)
-  // console.log(selectedIngredients)
+  console.log(selectedIngredients)
   const handleSearchName = (e) => {
     setSearchName(e.target.value); 
   };
@@ -58,6 +60,18 @@ export default function AddIngredients() {
         return [...prevSelected, ingredientName];
       }
     });
+  };
+  const handleSubmit = async () => {
+    try {
+      const response = await postIngredient(selectedIngredients)
+  
+      console.log("전송 성공:", response);
+      alert("재료가 성공적으로 추가되었습니다!");
+      navigate('/refrigerator')
+    } catch (error) {
+      console.error("전송 실패:", error);
+      alert("재료 추가에 실패했습니다.");
+    }
   };
 
   useEffect(() => {
@@ -99,7 +113,7 @@ export default function AddIngredients() {
               onChange={handleSearchName}
               placeholder="원하는 재료를 검색하세요"/>
           </S.SearchInputContainer>
-          <S.CompleteButton>완료</S.CompleteButton>
+          <S.CompleteButton onClick={handleSubmit}>완료</S.CompleteButton>
         </S.HeaderContainer>
         
         <S.TypeArrContainer>
@@ -132,7 +146,10 @@ export default function AddIngredients() {
                   <S.IngredientImg src={d.picture} alt="alt"/>
                 </S.ImgContainer>
                 <S.IngredientName>{d.name}</S.IngredientName>
-                <S.PlusImg src={plus_add} alt="alt"/>
+                <S.PlusImg 
+                  src={selectedIngredients.includes(d.name) ? check : plus_add} 
+                  alt="alt"
+                />
               </S.IngredientContainer>
             ))}
           </S.IngredientsContainer>
