@@ -30,7 +30,7 @@ function getLabel(type) {
     case "냉동식품":
       return "frozen";
     default:
-      return "unknown";
+      return "searchByName";
   }
 }
 
@@ -42,7 +42,7 @@ export default function AddIngredients() {
   const navigate = useNavigate();
   // console.log(searchName)
   // console.log(selectedType)
-  console.log(selectedIngredients)
+  // console.log(selectedIngredients)
   const handleSearchName = (e) => {
     setSearchName(e.target.value); 
   };
@@ -63,16 +63,23 @@ export default function AddIngredients() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://13.211.69.139:8080/api/ingredients/${getLabel(selectedType)}`);
-        setData(response.data); 
-        // console.log(response.data)
+        let url = `http://13.211.69.139:8080/api/ingredients/${getLabel(selectedType)}`;
+  
+        // searchName이 비어있지 않다면 검색 API 사용
+        if (searchName.trim() !== "") {
+          url = `http://13.211.69.139:8080/api/ingredients/searchByName?name=${searchName}`;
+        }
+  
+        const response = await axios.get(url);
+        setData(response.data);
       } catch (error) {
         console.error("데이터 가져오기 실패:", error);
       }
     };
-
+  
     fetchData();
-  }, [selectedType]); 
+  }, [selectedType, searchName]); 
+  
 
   return (
     <>
@@ -96,23 +103,23 @@ export default function AddIngredients() {
         </S.HeaderContainer>
         
         <S.TypeArrContainer>
-          {typeArr.map((type,index)=>{
-            let isActive;
-            if(selectedType===type){
-              isActive = true;
-            }else{
-              isActive = false;
-            }
-            return(
-              <S.TypeText 
-                key={index} 
-                $isActive={isActive}
-                onClick={handleSelectedType}
-              >
-                {type}
-              </S.TypeText>
-            )
-          })}
+        {searchName ? (
+            <S.TypeText $isActive={true}>검색결과</S.TypeText>
+          ) : (
+            typeArr.map((type, index) => {
+              let isActive = selectedType === type;
+
+              return (
+                <S.TypeText 
+                  key={index} 
+                  $isActive={isActive}
+                  onClick={handleSelectedType}
+                >
+                  {type}
+                </S.TypeText>
+              );
+            })
+          )}
         </S.TypeArrContainer>
         {data ? 
           <S.IngredientsContainer>
