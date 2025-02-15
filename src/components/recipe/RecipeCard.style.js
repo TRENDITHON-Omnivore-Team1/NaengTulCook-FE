@@ -1,9 +1,10 @@
 import { styled } from "styled-components";
 
 export const CompContainer = styled.div`
-  width: 78%;
-  margin: 40px; // 나중에 삭제
-  max-width: 500px;
+  width: 100%;
+  /* width: 78vw; */
+  min-width: 260px;
+  max-width: 388px;
 
   border-radius: 12px;
   background-color: #fff;
@@ -13,6 +14,7 @@ export const CompContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 `;
 export const ImgContainer = styled.div`
   position: relative;
@@ -69,4 +71,26 @@ export const RecipeButton = styled.button`
 
   border-radius: 50vh;
   background: #1d1d1d;
+`;
+
+// list
+export const SliderContainer = styled.ul`
+  margin: 0;
+  .slick-prev:before,
+  .slick-next:before {
+    display: none;
+  }
+  .slick-list {
+    /* padding: 0 30px !important; */
+  }
+  /* .slick-slide {
+    width: calc(100vw - 60px) !important;
+    max-width: 440px;
+  } */
+`;
+export const SliderContent = styled.li`
+  /* width: calc(100vw - 60px) !important; */
+  width: 100%;
+  height: calc(38vh + 247px + 96px);
+  padding: 48px 14px;
 `;
