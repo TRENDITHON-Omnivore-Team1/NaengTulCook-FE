@@ -5,7 +5,7 @@ export const CateWrapper = styled.div`
   
   .slick-dots li{
     margin:0;
-}
+  }
 `;
 
 export const CateHeader = styled.div`
@@ -29,6 +29,18 @@ export const DeleteText = styled.p`
 
   cursor:pointer;
 `;
+
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-column-gap: 42px;
+  padding: 4px;
+  height: 314px;
+  /* grid-template-rows: auto; */
+  align-content: start; 
+`;
+
+
 export const ItemContainer =styled.div`
 
 `;
