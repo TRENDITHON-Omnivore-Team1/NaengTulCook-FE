@@ -5,9 +5,10 @@ import "slick-carousel/slick/slick-theme.css";
 import RecipeCard from "@/components/recipe/RecipeCard";
 import { useEffect, useState } from "react";
 import { getRecipes } from "@/apis/recipe/getRecipes";
+import { RecipesRecommend } from "@/dummy/RecipesRecommend"; // 나중에 삭제
 
 export default function RecipeList() {
-  const [recipeData, setRecipeData] = useState();
+  const [recipeData, setRecipeData] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
   const settings = {
@@ -25,8 +26,9 @@ export default function RecipeList() {
     const fetchData = async () => {
       try {
         const response = await getRecipes();
-        console.log(response);
+        // console.log(response); // 로그 나중에 삭제
         setRecipeData(response);
+        setRecipeData(RecipesRecommend); // 나중에 삭제
       } catch (error) {
         setErrorMessage(error.message);
       }
@@ -38,12 +40,12 @@ export default function RecipeList() {
   return (
     <A.SliderContainer>
       <Slider {...settings}>
-        <A.SliderContent>
-          <RecipeCard />
-        </A.SliderContent>
-        <A.SliderContent>
-          <RecipeCard />
-        </A.SliderContent>
+        {recipeData.length > 0 &&
+          recipeData.map((item, i) => (
+            <A.SliderContent key={i}>
+              <RecipeCard {...item} />
+            </A.SliderContent>
+          ))}
       </Slider>
     </A.SliderContainer>
   );

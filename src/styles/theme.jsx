@@ -24,6 +24,9 @@ export const theme = {
     state_red: "#FF0000",
     state_blue: "#038EFF",
     state_yellow: "#FF9500",
+    bg_red: "#FCE5E5",
+    bg_blue: "#E6F2FC",
+    bg_yellow: "#FCF3E5",
     // green: "#00EA1F",
 
     error: "#FC3200",
@@ -35,6 +38,7 @@ export const theme = {
     // thin(1), extralight(2), light(3), regular(4), medium(5), semibold(6), bold(7), extrabold(8), black(9)
 
     pre_medium_13: FONT({ family: "Pretendard", weight: 500, size: 13 }),
+    pre_semibold_13: FONT({ family: "Pretendard", weight: 600, size: 13 }),
     pre_medium_14: FONT({ family: "Pretendard", weight: 500, size: 14 }),
     pre_semibold_14: FONT({ family: "Pretendard", weight: 600, size: 14 }),
     pre_semibold_16: FONT({ family: "Pretendard", weight: 600, size: 16 }),
