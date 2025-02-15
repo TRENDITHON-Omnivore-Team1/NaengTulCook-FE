@@ -3,7 +3,7 @@ import { RowCenterCSS } from "@/styles/layouts/Row";
 
 // 모달 오픈 시 배경 어둡게 오버레이
 export const BackgroundDarkOverlay = styled.div`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;

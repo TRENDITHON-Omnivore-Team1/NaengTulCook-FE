@@ -51,8 +51,19 @@ export const CardTitle = styled.div`
   margin-top: 4px;
   ${({ theme }) => theme.fonts.pre_extrabold_30}
 `;
-export const ChipItem = styled.div`
+export const ChipList = styled.div`
   margin-top: 24px;
+  padding: 0 12px;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 6px;
+
+  white-space: nowrap;
+`;
+export const ChipItem = styled.div`
   padding: 4px 11px;
   border-radius: 50vh;
   background: ${(props) =>
@@ -101,6 +112,8 @@ export const RecipeButton = styled.button`
 
 // list
 export const SliderContainer = styled.ul`
+  width: 100%;
+  overflow: hidden;
   margin: 0;
   .slick-prev:before,
   .slick-next:before {

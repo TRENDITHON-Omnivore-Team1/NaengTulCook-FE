@@ -1,7 +1,6 @@
 import * as A from "./RecipeCard.style";
-import Row from "@/styles/layouts/Row";
-import fireSvg from "@/assets/icons/icon_fire.svg";
-import clockSvg from "@/assets/icons/icon_clock.svg";
+import fireSvg from "@/assets/icons/recipe/icon_fire.svg";
+import clockSvg from "@/assets/icons/recipe/icon_clock.svg";
 
 export default function RecipeCard({
   forward_name,
@@ -20,7 +19,7 @@ export default function RecipeCard({
         </A.ImgContainer>
         <A.CardSubtitle>{forward_name}</A.CardSubtitle>
         <A.CardTitle>{name}</A.CardTitle>
-        <Row gap={5}>
+        <A.ChipList>
           {essential_absence.length > 0 &&
             essential_absence.map((item, i) => (
               <A.ChipItem key={i} $stateColor="red">
@@ -33,7 +32,7 @@ export default function RecipeCard({
                 {item}
               </A.ChipItem>
             ))}
-        </Row>
+        </A.ChipList>
         {/* 수정 예정 */}
         <A.InfoChip>
           <A.InfoContent>

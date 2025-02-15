@@ -14,7 +14,7 @@ export const RecipesRecommend = [
   {
     level: 2,
     catchphrase: "매콤한 감칠맛이 일품인 요리예요.",
-    forward_name: "짭조름한 양념이 고등어 속까지 배어 밥도둑이 되는 조림 요리",
+    forward_name: "짭조름한 양념",
     name: "고등어조림",
     ingredients: ["고등어", "무", "양파", "대파", "청양고추", "홍고추", "애호박", "감자"],
     optional_absence: ["청양고추", "홍고추", "애호박"],
