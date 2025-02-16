@@ -6,7 +6,7 @@ export const CompContainer = styled.div`
 
   width: 100%;
   max-width: 500px;
-  height: 5.4rem;
+  height: 86px;
 
   border: none;
   border-radius: 30px 30px 0px 0px;

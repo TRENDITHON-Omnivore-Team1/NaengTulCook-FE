@@ -1,6 +1,7 @@
 import * as A from "./RecipeCard.style";
 import fireSvg from "@/assets/icons/recipe/icon_fire.svg";
 import clockSvg from "@/assets/icons/recipe/icon_clock.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function RecipeCard({
   forward_name,
@@ -10,6 +11,12 @@ export default function RecipeCard({
   level,
   time,
 }) {
+  const navigate = useNavigate();
+
+  const handleMoveToCooking = () => {
+    navigate(`/recipe/cooking?id=1`); // id값 수정
+  };
+
   return (
     <>
       <A.CompContainer>
@@ -19,6 +26,7 @@ export default function RecipeCard({
         </A.ImgContainer>
         <A.CardSubtitle>{forward_name}</A.CardSubtitle>
         <A.CardTitle>{name}</A.CardTitle>
+
         <A.ChipList>
           {essential_absence.length > 0 &&
             essential_absence.map((item, i) => (
@@ -33,7 +41,7 @@ export default function RecipeCard({
               </A.ChipItem>
             ))}
         </A.ChipList>
-        {/* 수정 예정 */}
+
         <A.InfoChip>
           <A.InfoContent>
             <img src={fireSvg} alt="레벨" />
@@ -44,7 +52,8 @@ export default function RecipeCard({
             <p>{time}분 이내</p>
           </A.InfoContent>
         </A.InfoChip>
-        <A.RecipeButton>요리하기</A.RecipeButton>
+
+        <A.RecipeButton onClick={handleMoveToCooking}>요리하기</A.RecipeButton>
       </A.CompContainer>
     </>
   );

@@ -5,7 +5,7 @@ export default function RootLayout() {
   const location = useLocation();
 
   // 네비게이션 바가 필요 없는 경로
-  const noNavbarPaths = ["/recipe/detail", "/refrigerator/add-ingredient"];
+  const noNavbarPaths = ["/recipe/cooking", "/refrigerator/add-ingredient"];
 
   return (
     <>
