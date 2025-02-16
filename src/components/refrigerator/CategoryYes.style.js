@@ -11,6 +11,7 @@ export const CateWrapper = styled.div`
 export const CateHeader = styled.div`
   display: flex;
   justify-content:space-between;
+  margin-bottom:8px;
 `;
 export const CateName = styled.p`
   ${({theme})=>theme.fonts.pre_bold_20}
