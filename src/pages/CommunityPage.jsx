@@ -1,5 +1,5 @@
 import Topbar from "@/components/common/topbar/Topbar";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate,useLocation } from "react-router-dom";
 import {styled} from 'styled-components'
 import { FloatingButtonContainer } from "@/styles/common/CommonStyleComp";
 import write from '@/assets/community/write.svg'
@@ -39,34 +39,39 @@ const Write = styled.div`
 
 export default function CommunityPage() {
   const [isWrites, setIsWrites] = useState(false);
-
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleRouteChange = (index) => {
     navigate(pathList[index]);
   };
-
+  const handleGoCommunityWrite = (type)=>{
+    navigate('/community/write',{ state: { type: type } })
+  }
 
   return (
     <>
-      <Topbar 
-        optionList={optionList} 
-        pathList={pathList}  
-        onOptionSelect={handleRouteChange} 
-      />
+
+      {location.pathname !== "/community/write" && (
+        <Topbar optionList={optionList} pathList={pathList} onOptionSelect={handleRouteChange} />
+      )}
+
       <CommunityWrapper>
         <Outlet />
       </CommunityWrapper>
-      <FloatingButtonContainer onClick={()=>setIsWrites(!isWrites)}>
-        <img src={write} alt="write"/>
-        {isWrites &&
-          <WritesWrapper>
-            <Write>Q&A</Write>
-            <Write>경험<br/>공유</Write>
-            <Write>레시피<br/>공유</Write>
-          </WritesWrapper>
-        }
-      </FloatingButtonContainer>
+      
+      {location.pathname !== "/community/write" && (
+        <FloatingButtonContainer onClick={() => setIsWrites(!isWrites)}>
+          <img src={write} alt="write" />
+          {isWrites && (
+            <WritesWrapper>
+              <Write onClick={() => handleGoCommunityWrite("Q&A")}>Q&A</Write>
+              <Write onClick={() => handleGoCommunityWrite("이웃 경험 공유")}>경험<br/>공유</Write>
+              <Write>레시피<br/>공유</Write>
+            </WritesWrapper>
+          )}
+        </FloatingButtonContainer>
+      )}
     </>
   );
 }
