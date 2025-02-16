@@ -20,7 +20,8 @@ export const CompContainer = styled.div`
 export const ImgContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 38vh;
+  /* height: 38vh; */
+  height: 32vh;
   overflow: hidden;
 `;
 export const ThumbnailImg = styled.img`
@@ -119,9 +120,9 @@ export const SliderContainer = styled.ul`
   .slick-next:before {
     display: none;
   }
-  .slick-list {
-    /* padding: 0 30px !important; */
-  }
+  /* .slick-list {
+    padding: 0 30px !important;
+  } */
   /* .slick-slide {
     width: calc(100vw - 60px) !important;
     max-width: 440px;

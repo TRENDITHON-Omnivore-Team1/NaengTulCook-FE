@@ -7,9 +7,9 @@ import LoginPage from "@/pages/LoginPage";
 import RefrigeratorPage from "@/pages/RefrigeratorPage";
 import RecipePage from "@/pages/RecipePage";
 import CommunityPage from "@/pages/CommunityPage";
-import RecipeDetailPage from "@/pages/RecipeDetailPage";
 import AddIngredients from "@/pages/AddIngredients";
 import RecipeCookingPage from "@/pages/RecipeCookingPage";
+import CommunityDetailPage from "@/pages/CommunityDetailPage";
 
 export const router = createBrowserRouter([
   {
@@ -68,7 +68,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "detail",
-            element: <RecipeDetailPage />,
+            element: <CommunityDetailPage />,
           },
         ],
       },

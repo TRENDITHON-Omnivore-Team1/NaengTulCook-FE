@@ -9,6 +9,7 @@ import { RecipesRecommend } from "@/dummy/RecipesRecommend"; // 나중에 삭제
 
 export default function RecipeList() {
   const [recipeData, setRecipeData] = useState([]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const settings = {
     focusOnSelect: true,
@@ -26,14 +27,20 @@ export default function RecipeList() {
       const response = await getRecipes();
       // console.log(response); // 로그 나중에 삭제
       setRecipeData(response);
-      setRecipeData(RecipesRecommend); // 나중에 삭제
     };
 
-    fetchData();
+    try {
+      setRecipeData(RecipesRecommend); // 나중에 삭제
+      // fetchData();
+    } catch (error) {
+      setErrorMessage(error.message);
+      setRecipeData(RecipesRecommend); // 나중에 삭제
+    }
   }, []);
 
   return (
     <A.SliderContainer>
+      <p>{errorMessage}</p>
       <Slider {...settings}>
         {recipeData.length > 0 &&
           recipeData.map((item, i) => (
