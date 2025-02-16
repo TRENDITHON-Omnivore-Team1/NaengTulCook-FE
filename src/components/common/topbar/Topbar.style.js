@@ -5,6 +5,7 @@ import { ColumnCenterCSS } from "@/styles/layouts/Column";
 export const CompContainer = styled.div`
   position: sticky;
   top: 0;
+  z-index:100;
 
   padding-top: 8px;
   width: 100%;
