@@ -29,4 +29,6 @@ export const ContentContainer = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+
+  ${({ theme }) => theme.fonts.ws_semibold_20}
 `;

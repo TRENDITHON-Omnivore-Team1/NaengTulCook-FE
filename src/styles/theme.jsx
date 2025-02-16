@@ -51,5 +51,7 @@ export const theme = {
     gi_regular_13: FONT({ family: "Giants", weight: 400, size: 13 }),
     gi_bold_20: FONT({ family: "Giants", weight: 700, size: 20 }),
     gi_bold_22: FONT({ family: "Giants", weight: 700, size: 22 }),
+
+    ws_semibold_20: FONT({ family: "WorkSans", weight: 600, size: 20 }),
   },
 };

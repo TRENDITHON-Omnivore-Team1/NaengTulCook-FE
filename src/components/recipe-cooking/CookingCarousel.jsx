@@ -5,9 +5,7 @@ export default function CookingCarousel() {
     <>
       <A.CarouselContent>
         <A.ImgContainer src={"http://test.api.weniv.co.kr/asset/img/6/thumbnailImg.jpg"} />
-        <A.ContentContainer>
-          <h1>준비물 준비</h1>
-        </A.ContentContainer>
+        <A.ContentContainer>준비물 준비</A.ContentContainer>
       </A.CarouselContent>
     </>
   );

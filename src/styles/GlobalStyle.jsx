@@ -87,6 +87,14 @@ export const GlobalStyle = createGlobalStyle`
     font-display: swap;
   }
 
+  @font-face {
+    font-family: 'WorkSans';
+    src: url('@/assets/fonts/WorkSans-SemiBold.woff2') format('font-woff2'); 
+    font-weight: 600; 
+    font-style: normal;
+    font-display: swap;
+  }
+
   
 
 
