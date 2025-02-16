@@ -27,11 +27,11 @@ export default function RecipeList() {
       const response = await getRecipes();
       // console.log(response); // 로그 나중에 삭제
       setRecipeData(response);
-      setRecipeData(RecipesRecommend); // 나중에 삭제
     };
 
     try {
-      fetchData();
+      setRecipeData(RecipesRecommend); // 나중에 삭제
+      // fetchData();
     } catch (error) {
       setErrorMessage(error.message);
       setRecipeData(RecipesRecommend); // 나중에 삭제
