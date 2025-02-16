@@ -119,9 +119,9 @@ export const SliderContainer = styled.ul`
   .slick-next:before {
     display: none;
   }
-  .slick-list {
-    /* padding: 0 30px !important; */
-  }
+  /* .slick-list {
+    padding: 0 30px !important;
+  } */
   /* .slick-slide {
     width: calc(100vw - 60px) !important;
     max-width: 440px;
