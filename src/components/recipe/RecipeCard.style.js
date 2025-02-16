@@ -20,7 +20,8 @@ export const CompContainer = styled.div`
 export const ImgContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 38vh;
+  /* height: 38vh; */
+  height: 32vh;
   overflow: hidden;
 `;
 export const ThumbnailImg = styled.img`
