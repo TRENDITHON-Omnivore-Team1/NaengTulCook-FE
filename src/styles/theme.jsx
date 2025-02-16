@@ -50,6 +50,7 @@ export const theme = {
     pre_bold_20: FONT({ family: "Pretendard", weight: 700, size: 20 }),
     pre_extrabold_30: FONT({ family: "Pretendard", weight: 800, size: 30 }),
 
+    gi_regular_10: FONT({ family: "Giants", weight: 400, size: 10 }),
     gi_regular_13: FONT({ family: "Giants", weight: 400, size: 13 }),
     gi_bold_20: FONT({ family: "Giants", weight: 700, size: 20 }),
     gi_bold_22: FONT({ family: "Giants", weight: 700, size: 22 }),
