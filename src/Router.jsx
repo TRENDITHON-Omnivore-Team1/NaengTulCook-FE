@@ -9,7 +9,9 @@ import RecipePage from "@/pages/RecipePage";
 import CommunityPage from "@/pages/CommunityPage";
 import AddIngredients from "@/pages/AddIngredients";
 import RecipeCookingPage from "@/pages/RecipeCookingPage";
-import CommunityDetailPage from "@/pages/CommunityDetailPage";
+import NeighborRecipe from "./components/community/NeighborRecipe";
+import NeighborExperience from "./components/community/NeighborExperience";
+import QandA from './components/community/QandA';
 
 export const router = createBrowserRouter([
   {
@@ -57,19 +59,13 @@ export const router = createBrowserRouter([
           },
         ],
       },
-
       {
-        path: "community", // 이웃의 장 페이지
-        element: <Outlet />,
+        path: "community", //이웃의 장 페이지
+        element: <CommunityPage/>,
         children: [
-          {
-            index: true,
-            element: <CommunityPage />,
-          },
-          {
-            path: "detail",
-            element: <CommunityDetailPage />,
-          },
+          { index: true, element: <NeighborRecipe/> },
+          { path : "experience", element: <NeighborExperience/>},
+          { path: "q&a", element: <QandA/>},
         ],
       },
       {

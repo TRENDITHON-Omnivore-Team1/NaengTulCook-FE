@@ -4,7 +4,7 @@ import checkSvg from "@/assets/icons/icon_check.svg";
 import { useState } from "react";
 import { BackgroundDarkOverlay } from "@/styles/common/CommonStyleComp";
 
-function DropdownComp({ optionList, currentIndex, setCurrentIndex, setIsOpened }) {
+function DropdownComp({ optionList, currentIndex, setCurrentIndex, setIsOpened, onOptionSelect, pathList }) {
   return (
     <>
       <BackgroundDarkOverlay />
@@ -14,13 +14,23 @@ function DropdownComp({ optionList, currentIndex, setCurrentIndex, setIsOpened }
             {option}
           </A.TextButton>
         ))}
-        <A.CheckImg onClick={() => setIsOpened(false)} src={checkSvg} alt="선택완료" />
+        <A.CheckImg
+          onClick={() => {
+            // CheckImg 클릭 시 라우팅 이동
+            if (pathList && pathList[currentIndex]) {
+              onOptionSelect(currentIndex); 
+            }
+            setIsOpened(false);
+          }}
+          src={checkSvg}
+          alt="선택완료"
+        />
       </A.DropdownContainer>
     </>
   );
 }
 
-export default function Topbar({ pageTitle = "", optionList = [] }) {
+export default function Topbar({ pageTitle = "", optionList = [], onOptionSelect, pathList }) {
   const [isOpened, setIsOpened] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -42,6 +52,8 @@ export default function Topbar({ pageTitle = "", optionList = [] }) {
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
           setIsOpened={setIsOpened}
+          onOptionSelect={onOptionSelect} 
+          pathList={pathList}  
         />
       )}
     </>
