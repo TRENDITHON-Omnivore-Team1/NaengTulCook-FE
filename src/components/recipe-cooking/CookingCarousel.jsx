@@ -13,7 +13,7 @@ export default function CookingCarousel() {
         <A.ContentContainer>
           <A.ContentTitle>준비물 준비</A.ContentTitle>
 
-          <Row gap={8}>
+          <Row $gap={8}>
             <A.CarouselDot $isActive={true}>
               <img src={flagActiveSvg} alt="준비" />
             </A.CarouselDot>

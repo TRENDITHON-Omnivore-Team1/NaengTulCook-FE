@@ -10,29 +10,29 @@ export const ColumnCenterCSS = css`
 const ColumnCSS = css`
   display: flex;
   flex-direction: column;
-  align-items: ${({ verticalAlign }) =>
-    verticalAlign === "center"
+  align-items: ${({ $verticalAlign }) =>
+    $verticalAlign === "center"
       ? "center"
-      : verticalAlign === "top"
+      : $verticalAlign === "top"
       ? "flex-start"
-      : verticalAlign === "bottom"
+      : $verticalAlign === "bottom"
       ? "flex-end"
       : "flex-start"};
 
-  justify-content: ${({ horizonAlign }) =>
-    horizonAlign === "center"
+  justify-content: ${({ $horizonAlign }) =>
+    $horizonAlign === "center"
       ? "center"
-      : horizonAlign === "left"
+      : $horizonAlign === "left"
       ? "flex-start"
-      : horizonAlign === "right"
+      : $horizonAlign === "right"
       ? "flex-end"
-      : horizonAlign === "distribute"
+      : $horizonAlign === "distribute"
       ? "space-between"
-      : horizonAlign === "between"
+      : $horizonAlign === "between"
       ? "space-between"
       : "flex-start"};
 
-  gap: ${({ gap }) => (gap ? `${gap}px` : "0")};
+  gap: ${({ $gap }) => ($gap ? `${$gap}px` : "0")};
 `;
 
 const Column = styled.div`
