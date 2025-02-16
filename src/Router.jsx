@@ -12,6 +12,7 @@ import RecipeCookingPage from "@/pages/RecipeCookingPage";
 import NeighborRecipe from "./components/community/NeighborRecipe";
 import NeighborExperience from "./components/community/NeighborExperience";
 import QandA from './components/community/QandA';
+import CommunityWritePage from "./pages/CommunityWritePage";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,7 @@ export const router = createBrowserRouter([
           { index: true, element: <NeighborRecipe/> },
           { path : "experience", element: <NeighborExperience/>},
           { path: "q&a", element: <QandA/>},
+          { path: "write", element:<CommunityWritePage/>}
         ],
       },
       {
