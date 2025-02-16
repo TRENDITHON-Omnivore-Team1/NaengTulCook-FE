@@ -8,6 +8,11 @@ import { getIngredient,getCondiment } from "@/apis/refrigerator/getIngredient";
 const RefriWrapper = styled.div`
   padding: 30px 30px 100px;
 `;
+const TopBarContainer = styled.div`
+  position:sticky;
+  top:0;
+  z-index:100;
+`;
 
 export default function RefrigeratorPage() {
   const [ingredient,setIngredient]= useState([])
@@ -40,7 +45,9 @@ export default function RefrigeratorPage() {
 
   return (
     <>
-      <Topbar pageTitle="나의 냉장고" />
+      <TopBarContainer>
+        <Topbar pageTitle="나의 냉장고" />
+      </TopBarContainer>
       <RefriWrapper>
         {ingredient.length > 0 ? (
           <CategoryYes category='식재료' ingredient={ingredient} />
