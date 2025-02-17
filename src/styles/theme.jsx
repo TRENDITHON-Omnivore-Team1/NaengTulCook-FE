@@ -45,13 +45,15 @@ export const theme = {
     pre_medium_16: FONT({ family: "Pretendard", weight: 500, size: 16 }),
     pre_semibold_16: FONT({ family: "Pretendard", weight: 600, size: 16 }),
     pre_semibold_18: FONT({ family: "Pretendard", weight: 600, size: 18 }),
-    pre_semibold_20: FONT({ family: "Pretendard", weight: 600, size: 20 }),
     pre_bold_18: FONT({ family: "Pretendard", weight: 700, size: 18 }),
+    pre_semibold_20: FONT({ family: "Pretendard", weight: 600, size: 20 }),
     pre_bold_20: FONT({ family: "Pretendard", weight: 700, size: 20 }),
+    pre_bold_26: FONT({ family: "Pretendard", weight: 700, size: 26 }),
     pre_extrabold_30: FONT({ family: "Pretendard", weight: 800, size: 30 }),
 
     gi_regular_10: FONT({ family: "Giants", weight: 400, size: 10 }),
     gi_regular_13: FONT({ family: "Giants", weight: 400, size: 13 }),
+    gi_regular_20: FONT({ family: "Giants", weight: 400, size: 20 }),
     gi_bold_20: FONT({ family: "Giants", weight: 700, size: 20 }),
     gi_bold_22: FONT({ family: "Giants", weight: 700, size: 22 }),
 

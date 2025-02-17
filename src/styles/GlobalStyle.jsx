@@ -102,13 +102,13 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Pretendard', sans-serif;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 400px) {
     #root {
-      width: 500px;
+      width: 400px;
     }
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 400px) {
     #root {
       width: 100vw;
     }
