@@ -5,7 +5,7 @@ export const CompContainer = styled.div`
   bottom: 0;
 
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   height: 86px;
 
   border: none;
