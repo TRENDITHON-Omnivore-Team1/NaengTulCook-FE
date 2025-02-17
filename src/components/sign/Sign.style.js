@@ -7,6 +7,8 @@ export const BackgroundForm = styled.form`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  background-color: ${(props) => (props.$isBlack ? "#1D1D1D" : "#FFFFFF")};
 `;
 export const InputLabel = styled.p`
   margin: 24px 30px 10px 30px;
@@ -32,11 +34,11 @@ export const StyledSignInput = styled.input`
   background-color: #f0f0f0;
 `;
 export const ErrorMessage = styled.p`
-  margin: 4px 30px 0 34px;
+  margin: 8px 30px 0 34px;
   width: calc(100% - 60px);
 
   color: ${({ theme }) => theme.colors.error};
-  ${({ theme }) => theme.fonts.pre_medium_14};
+  ${({ theme }) => theme.fonts.pre_regular_12};
 `;
 
 export const ButtonContainer = styled.div`

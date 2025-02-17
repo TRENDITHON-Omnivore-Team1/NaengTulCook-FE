@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const InputContainer = styled.div`
-  margin: calc((100vh - 540px) / 2) 0 0 0;
+  margin: calc((100vh - 560px) / 2) 0 0 0;
   width: 100%;
 `;
 export const LogoTitle = styled.h1`

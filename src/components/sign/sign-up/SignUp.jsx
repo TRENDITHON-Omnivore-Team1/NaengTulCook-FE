@@ -4,6 +4,10 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { postSignUp } from "@/apis/sign/postSignUp";
 import { useState } from "react";
+import * as A from "./SignUp.style";
+import * as S from "@/components/sign/Sign.style";
+import BigButton from "@/components/common/button/BigButton";
+import closeSvg from "@/assets/splash/icon_close.svg";
 
 export default function SignUp() {
   const schema = yup.object({
@@ -47,20 +51,40 @@ export default function SignUp() {
 
   return (
     <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="text" {...register("id")} placeholder="아이디" />
-        <span style={{ color: "red" }}>{errors.id?.message}</span>
-        <br />
-        <input type="password" {...register("password")} placeholder="비밀번호" />
-        <span style={{ color: "red" }}>{errors.password?.message}</span>
-        <br />
-        <input type="password" {...register("passwordCheck")} placeholder="비밀번호 확인" />
-        <span style={{ color: "red" }}>{errors.passwordCheck?.message}</span>
-        <br />
-        {errorMessage && <span style={{ color: "red" }}>{errorMessage}</span>}
-        <button type="submit">가입하기</button>
-      </form>
-      <button onClick={handleMoveToLogin}>로그인하기</button>
+      <S.BackgroundForm onSubmit={handleSubmit(onSubmit)} $isBlack={true}>
+        <A.InputContainer>
+          <A.Topbar>
+            <A.IconButton onClick={handleMoveToLogin} src={closeSvg} alt="뒤로가기" />
+            <A.PageTitle>냉털쿡 가입하기</A.PageTitle>
+          </A.Topbar>
+
+          <S.InputLabel $isWhite={true}>사용할 아이디를 입력해주세요.</S.InputLabel>
+          <S.StyledSignInput type="text" {...register("id")} placeholder="아이디" />
+          <S.ErrorMessage>{errors.id?.message}</S.ErrorMessage>
+
+          <S.InputLabel $isWhite={true}>사용할 비밀번호를 입력해주세요.</S.InputLabel>
+          <S.StyledSignInput type="password" {...register("password")} placeholder="비밀번호" />
+          <S.ErrorMessage>{errors.password?.message}</S.ErrorMessage>
+
+          <S.InputLabel $isWhite={true}>비밀번호 확인</S.InputLabel>
+          <S.StyledSignInput
+            type="password"
+            {...register("passwordCheck")}
+            placeholder="비밀번호 확인"
+          />
+          <S.ErrorMessage>{errors.passwordCheck?.message}</S.ErrorMessage>
+
+          {errorMessage && <S.ErrorMessage>{errorMessage}</S.ErrorMessage>}
+        </A.InputContainer>
+
+        <S.ButtonContainer>
+          <BigButton type="submit" buttonText="가입하기" $isWhiteButton={true} />
+          <S.SpanButton onClick={handleMoveToLogin}>
+            이미 가입하셨나요?
+            <A.LoginSpan>로그인하기</A.LoginSpan>
+          </S.SpanButton>
+        </S.ButtonContainer>
+      </S.BackgroundForm>
     </>
   );
 }
