@@ -13,9 +13,9 @@ const CommunityWrapper = styled.div`
 `;
 
 const WritesWrapper = styled.div`
-  position: fixed;
-  bottom: 10.8rem;
-  right: 31px;
+  position: absolute;
+  bottom: 4.3rem;
+  right: 8px;
 
   display:flex;
   flex-direction: column;
