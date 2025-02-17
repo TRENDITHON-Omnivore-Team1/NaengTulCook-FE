@@ -1,9 +1,9 @@
-import LoginInput from "@/components/sign/login/LoginInput";
+import Login from "@/components/sign/login/Login";
 
 export default function LoginPage() {
   return (
     <>
-      <LoginInput />
+      <Login />
     </>
   );
 }

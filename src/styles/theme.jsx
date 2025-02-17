@@ -29,7 +29,7 @@ export const theme = {
     bg_yellow: "#FCF3E5",
     // green: "#00EA1F",
 
-    error: "#FC3200",
+    error: "#FC0000",
 
     primary: "#1D1D1D", // 메인 색상
     secondary: "#FFF", // 서브 색상
@@ -42,7 +42,9 @@ export const theme = {
     pre_semibold_13: FONT({ family: "Pretendard", weight: 600, size: 13 }),
     pre_medium_14: FONT({ family: "Pretendard", weight: 500, size: 14 }),
     pre_semibold_14: FONT({ family: "Pretendard", weight: 600, size: 14 }),
+    pre_bold_14: FONT({ family: "Pretendard", weight: 700, size: 14 }),
     pre_medium_16: FONT({ family: "Pretendard", weight: 500, size: 16 }),
+    pre_semibold_15: FONT({ family: "Pretendard", weight: 600, size: 15 }),
     pre_semibold_16: FONT({ family: "Pretendard", weight: 600, size: 16 }),
     pre_semibold_18: FONT({ family: "Pretendard", weight: 600, size: 18 }),
     pre_bold_18: FONT({ family: "Pretendard", weight: 700, size: 18 }),
@@ -56,6 +58,7 @@ export const theme = {
     gi_regular_20: FONT({ family: "Giants", weight: 400, size: 20 }),
     gi_bold_20: FONT({ family: "Giants", weight: 700, size: 20 }),
     gi_bold_22: FONT({ family: "Giants", weight: 700, size: 22 }),
+    gi_regular_44: FONT({ family: "Giants", weight: 400, size: 44 }),
 
     ws_semibold_20: FONT({ family: "WorkSans", weight: 600, size: 20 }),
   },

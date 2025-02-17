@@ -14,9 +14,14 @@ const StyledButton = styled.button`
   background-color: ${(props) => (props.$isWhiteButton == true ? "#fff" : "#1D1D1D")};
 `;
 
-export default function BigButton({ onClickFn, buttonText = "", $isWhiteButton = false }) {
+export default function BigButton({
+  type = "button",
+  onClickFn,
+  buttonText = "",
+  $isWhiteButton = false,
+}) {
   return (
-    <StyledButton onClick={onClickFn} $isWhiteButton={$isWhiteButton}>
+    <StyledButton type={type} onClick={onClickFn} $isWhiteButton={$isWhiteButton}>
       {buttonText}
     </StyledButton>
   );

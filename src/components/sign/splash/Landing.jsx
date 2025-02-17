@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import * as S from "@/components/sign/Sign.style";
 import * as A from "./Splash.style";
 import BigButton from "@/components/common/button/BigButton";
 import landingPng from "@/assets/splash/img_landing.png";
@@ -30,7 +31,7 @@ export default function Landing() {
             buttonText="로그인"
             $isWhiteButton={true}
           />
-          <A.SignUpButton onClick={() => handleMoveToPage("sign-up")}>가입하기</A.SignUpButton>
+          <S.SpanButton onClick={() => handleMoveToPage("sign-up")}>가입하기</S.SpanButton>
         </A.ContentContainer>
       </A.CompContainer>
     </>

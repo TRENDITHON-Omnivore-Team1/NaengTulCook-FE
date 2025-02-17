@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { postSignUp } from "@/apis/sign/postSignUp";
 import { useState } from "react";
 
-export default function SignUpInput() {
+export default function SignUp() {
   const schema = yup.object({
     id: yup.string().required("아이디를 반드시 입력해주세요."),
     password: yup

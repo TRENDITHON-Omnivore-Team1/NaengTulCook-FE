@@ -19,6 +19,7 @@ export const ContentContainer = styled.div`
   top: calc(-100vh);
   width: 100%;
   height: 100vh;
+  padding-bottom: 52px;
 
   display: flex;
   flex-direction: column;
@@ -47,14 +48,4 @@ export const IntroduceText = styled.p`
   color: #ffffff;
   ${({ theme }) => theme.fonts.pre_bold_26};
   line-height: 35px;
-`;
-export const SignUpButton = styled.button`
-  margin: 12px 0 52px 0;
-  padding: 12px;
-
-  border: none;
-  background-color: transparent;
-
-  color: #aaaaaa;
-  ${({ theme }) => theme.fonts.pre_bold_18};
 `;
