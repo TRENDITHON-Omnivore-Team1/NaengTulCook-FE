@@ -4,8 +4,8 @@ import { styled } from "styled-components";
 export const CompContainer = styled.div`
   width: 100%;
   /* width: 78vw; */
-  min-width: 260px;
-  max-width: 388px;
+  min-width: 224px;
+  max-width: 304px;
 
   border-radius: 12px;
   background-color: #fff;
@@ -42,7 +42,7 @@ export const OverlayGradation = styled.div`
 // 여기부터 내용
 export const CardSubtitle = styled.div`
   margin-top: 20px;
-  width: 60%;
+  width: 80%;
 
   ${({ theme }) => theme.fonts.pre_medium_14}
   word-break: keep-all; /* 단어 단위로 줄바꿈 */

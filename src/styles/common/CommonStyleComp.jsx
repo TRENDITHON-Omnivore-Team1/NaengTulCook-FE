@@ -14,8 +14,8 @@ export const BackgroundDarkOverlay = styled.div`
 `;
 // 플로팅 버튼(레시피 페이지, 이웃의 장 페이지)
 export const FloatingButtonContainer = styled.button`
-  position: fixed;
-  bottom: 6.3rem;
+  position: absolute;
+  bottom: 100px;
   right: 24px;
   width: 60px;
   height: 60px;

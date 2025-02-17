@@ -1,9 +1,9 @@
-import SignUpInput from "@/components/sign/sign-up/SignUpInput";
+import SignUp from "@/components/sign/sign-up/SignUp";
 
 export default function SignUpPage() {
   return (
     <>
-      <SignUpInput />
+      <SignUp />
     </>
   );
 }
