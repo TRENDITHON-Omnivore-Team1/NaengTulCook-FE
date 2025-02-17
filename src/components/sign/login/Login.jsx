@@ -21,9 +21,14 @@ export default function Login() {
       const userId = await postLogin({
         body: { userIdentifier: data.id, password: data.password },
       });
-      localStorage.setItem("userId", userId);
+
+      localStorage.setItem("userId", userId.userId);
       // localStorage.setItem("isFirstLogin", true); // 튜토리얼 화면용(정보 추가하는 페이지에)
-      navigate(`/refrigerator`);
+      if (userId.nicknameExists) {
+        navigate(`/refrigerator`);
+      } else {
+        navigate(`/refrigerator`); // 사전정보입력 페이지로 수정
+      }
     } catch (error) {
       setErrorMessage(error.message);
     }
