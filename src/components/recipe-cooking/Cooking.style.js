@@ -24,7 +24,24 @@ export const GradationWhite = styled.div`
 
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) -10%, #fff 90%);
 `;
-export const FloatingButton = styled.button`
+export const FloatingButtonPrevious = styled.button`
+  position: absolute;
+  bottom: 48px;
+  left: 24px;
+
+  width: 66px;
+  height: 40px;
+
+  ${RowCenterCSS}
+
+  color: #1D1D1D;
+  ${({ theme }) => theme.fonts.gi_regular_15}
+
+  border-radius: 22px;
+  border: 1px solid #1d1d1d;
+  background-color: #fff;
+`;
+export const FloatingButtonNext = styled.button`
   position: absolute;
   bottom: 48px;
   right: 24px;
