@@ -19,6 +19,8 @@ export const BorderLine = styled.div`
 
 export const FormContainer = styled.div`
   padding:30px 25px 40px;
+  position:relative;
+  height:calc(100vh - 156.5px);
 `; 
 export const FormTitle = styled.input`
   outline:none;
@@ -26,6 +28,7 @@ export const FormTitle = styled.input`
   ${({theme})=>theme.fonts.pre_semibold_20}
   line-height:138%;
   color:#1D1D1D;
+  width:100%;
 
   &::placeholder {
     color: #A6A6A6;
@@ -40,7 +43,7 @@ export const FormTextArea=styled.textarea`
   border:none;
   outline:none;
   width:100%;
-  height:300px;
+  height:calc(100% - 160px);
   color: #1D1D1D;
 
   ${({theme})=>theme.fonts.pre_medium_16}
@@ -50,6 +53,15 @@ export const FormTextArea=styled.textarea`
   }
 `;
 export const FormButton= styled.button`
-  
+  position:absolute;
+  bottom:40px;
+  width:calc(100% - 50px);
+  height:60px;
+  border-radius: 59px;
+  border: 1px solid #1D1D1D;
+  ${({theme})=>theme.fonts.pre_bold_18};
+
+  background-color: ${(props) => (props.$isActive ? '#1D1D1D' : '#FFF')};  
+  color: ${(props) => (props.$isActive ? '#FFF' : '#1D1D1D')};  
 `;
 
