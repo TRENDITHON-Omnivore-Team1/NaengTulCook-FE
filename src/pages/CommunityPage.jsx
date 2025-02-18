@@ -8,14 +8,14 @@ import { useState } from "react";
 const optionList = ["이웃 레시피", "이웃 경험 공유", "Q&A"];
 const pathList = ["/community", "/community/experience", "/community/q&a"];
 
-const CommunityWrapper = styled.div`
-  padding:0 30px;
-`;
+// const CommunityWrapper = styled.div`
+//   padding:0 30px;
+// `;
 
 const WritesWrapper = styled.div`
-  position: fixed;
-  bottom: 10.8rem;
-  right: 31px;
+  position: absolute;
+  bottom: 4.3rem;
+  right: 8px;
 
   display:flex;
   flex-direction: column;
@@ -56,9 +56,7 @@ export default function CommunityPage() {
         <Topbar optionList={optionList} pathList={pathList} onOptionSelect={handleRouteChange} />
       )}
 
-      <CommunityWrapper>
-        <Outlet />
-      </CommunityWrapper>
+      <Outlet />
       
       {location.pathname !== "/community/write" && (
         <FloatingButtonContainer onClick={() => setIsWrites(!isWrites)}>
