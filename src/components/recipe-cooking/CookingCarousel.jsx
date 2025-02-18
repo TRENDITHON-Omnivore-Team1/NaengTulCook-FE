@@ -3,6 +3,7 @@ import * as A from "./Cooking.style";
 import CookingIngredients from "./CookingIngredients";
 import flagSvg from "@/assets/icons/recipe/icon_flag.svg";
 import flagActiveSvg from "@/assets/icons/recipe/icon_flag_active.svg";
+import CookingStepList from "./CookingStepList";
 
 export default function CookingCarousel() {
   return (
@@ -22,8 +23,15 @@ export default function CookingCarousel() {
             <A.CarouselDot>3</A.CarouselDot>
           </Row>
 
+          {/* 쿠킹 재료 */}
           <CookingIngredients />
+          {/* 조리하기 */}
+          <CookingStepList />
         </A.ContentContainer>
+
+        <A.GradationWhite>
+          <A.FloatingButton>준비완료! 요리시작</A.FloatingButton>
+        </A.GradationWhite>
       </A.CarouselContent>
     </>
   );

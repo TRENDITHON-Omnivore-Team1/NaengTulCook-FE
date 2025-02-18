@@ -11,22 +11,22 @@ export default function RecipeCookingPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  useState(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getCookCreate(recipeName);
+  // useState(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await getCookCreate(recipeName);
 
-        setData(response);
-        setIsLoading(true);
-      } catch {
-        setIsError(true);
-      }
-    };
+  //       setData(response);
+  //       setIsLoading(true);
+  //     } catch {
+  //       setIsError(true);
+  //     }
+  //   };
 
-    if (recipeName) {
-      fetchData();
-    }
-  }, [recipeName]);
+  //   if (recipeName) {
+  //     fetchData();
+  //   }
+  // }, [recipeName]);
 
   return (
     <>

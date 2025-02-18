@@ -14,6 +14,32 @@ export const ImgContainer = styled.img`
 
   object-fit: cover;
 `;
+// 다음 플로팅 버튼
+export const GradationWhite = styled.div`
+  position: absolute;
+  bottom: 0;
+
+  width: 100%;
+  height: 128px;
+
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) -10%, #fff 90%);
+`;
+export const FloatingButton = styled.button`
+  position: absolute;
+  bottom: 48px;
+  right: 24px;
+
+  width: 160px;
+  height: 40px;
+
+  ${RowCenterCSS}
+
+  color: #fff;
+  ${({ theme }) => theme.fonts.gi_regular_15}
+
+  border-radius: 22px;
+  background-color: #1d1d1d;
+`;
 // 캐러셀 박스
 export const ContentContainer = styled.div`
   position: relative;
@@ -21,7 +47,7 @@ export const ContentContainer = styled.div`
 
   width: 100%;
   height: calc(100vh - 256px);
-  padding: 20px 24px;
+  padding: 20px 24px 128px 24px;
 
   overflow-x: hidden;
   overflow-y: scroll;
@@ -77,3 +103,19 @@ export const IngredientsAmount = styled.p`
 `;
 
 // 조리하기 페이지
+export const StepChip = styled.div`
+  padding: 4px 0;
+  width: 78px;
+
+  ${RowCenterCSS}
+
+  color: #fff;
+  ${({ theme }) => theme.fonts.gi_regular_13}
+
+  border-radius: 14px;
+  background-color: #1d1d1d;
+`;
+export const ContentText = styled.p`
+  margin: -4px 0 0 4px;
+  ${({ theme }) => theme.fonts.pre_medium_16}
+`;
