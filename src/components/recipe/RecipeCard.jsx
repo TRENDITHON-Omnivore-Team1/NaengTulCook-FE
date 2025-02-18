@@ -14,7 +14,7 @@ export default function RecipeCard({
   const navigate = useNavigate();
 
   const handleMoveToCooking = () => {
-    navigate(`/recipe/cooking?id=1`); // id값 수정
+    navigate(`/recipe/cooking?recipeName=${name}`); // id값 수정
   };
 
   return (
