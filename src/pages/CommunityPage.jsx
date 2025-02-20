@@ -80,8 +80,8 @@ export default function CommunityPage() {
           <img src={write} alt="write" />
           {isWrites && (
             <WritesWrapper>
-              <Write onClick={() => handleGoCommunityWrite('experience')}>Q&A</Write>
-              <Write onClick={() => handleGoCommunityWrite("q&a")}>경험<br/>공유</Write>
+              <Write onClick={() => handleGoCommunityWrite('q&a')}>Q&A</Write>
+              <Write onClick={() => handleGoCommunityWrite("experience")}>경험<br/>공유</Write>
               <Write >레시피<br/>공유</Write>
             </WritesWrapper>
           )}

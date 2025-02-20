@@ -39,11 +39,17 @@ export default function CommunityWritePage() {
     }
   };
 
+  const title = location.state?.type === "q&a" 
+    ? "Q&A" 
+    : location.state?.type === "experience" 
+    ? "이웃 경험 공유" 
+    : "기본 제목";
   const isFormValid = formData.title.trim() !== "" && formData.content.trim() !== "";
+
 
   return (
     <>
-      <Topbar pageTitle={location.state.type}/>
+      <Topbar pageTitle={title}/>
       
       <S.SectionContainer>
         <S.SectionText1>글 등록</S.SectionText1>
