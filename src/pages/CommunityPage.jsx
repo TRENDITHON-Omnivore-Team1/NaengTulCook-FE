@@ -37,6 +37,7 @@ const Write = styled.div`
   cursor:pointer;
 `
 
+
 export default function CommunityPage() {
   const [isWrites, setIsWrites] = useState(false);
   const navigate = useNavigate();
@@ -46,26 +47,42 @@ export default function CommunityPage() {
     navigate(pathList[index]);
   };
   const handleGoCommunityWrite = (type)=>{
-    navigate('/community/write',{ state: { type: type } })
+    navigate(`/community/${type}/write`,{ state: { type: type } })
   }
+
+  const writePaths = [
+    "/community/experience/write",
+    "/community/q&a/write",
+    "/community/post", 
+  ];
+
+  // 현재 경로가 동적 경로 패턴을 포함하는지 체크
+  const isWritePage = writePaths.some((path) => {
+    const postRegex = /^\/community\/post\/\d+$/; 
+ 
+    return (
+      location.pathname.match(postRegex) || 
+      writePaths.includes(location.pathname)
+    );
+  });
+
 
   return (
     <>
 
-      {location.pathname !== "/community/write" && (
+      {!isWritePage && (
         <Topbar optionList={optionList} pathList={pathList} onOptionSelect={handleRouteChange} />
       )}
 
       <Outlet />
-      
-      {location.pathname !== "/community/write" && (
+      {!isWritePage && (
         <FloatingButtonContainer onClick={() => setIsWrites(!isWrites)}>
           <img src={write} alt="write" />
           {isWrites && (
             <WritesWrapper>
-              <Write onClick={() => handleGoCommunityWrite("Q&A")}>Q&A</Write>
-              <Write onClick={() => handleGoCommunityWrite("이웃 경험 공유")}>경험<br/>공유</Write>
-              <Write>레시피<br/>공유</Write>
+              <Write onClick={() => handleGoCommunityWrite('experience')}>Q&A</Write>
+              <Write onClick={() => handleGoCommunityWrite("q&a")}>경험<br/>공유</Write>
+              <Write >레시피<br/>공유</Write>
             </WritesWrapper>
           )}
         </FloatingButtonContainer>

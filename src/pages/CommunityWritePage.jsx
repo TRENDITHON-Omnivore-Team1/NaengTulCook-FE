@@ -1,11 +1,12 @@
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import {useState} from 'react'
 import Topbar  from '@/components/common/topbar/Topbar';
 import * as S from "@/components/community/CommunityWrite.style"
-
+import { postNeightbor } from "@/apis/community/Neighbor";
 
 export default function CommunityWritePage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     content: "",
@@ -19,6 +20,27 @@ export default function CommunityWritePage() {
     }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const userId = localStorage.getItem("userId"); 
+    const dataToSubmit = {
+      ...formData,
+      userId: userId,  
+    };
+
+    try{
+      console.log(dataToSubmit)
+      const response = await postNeightbor(dataToSubmit)
+      console.log(response)
+      navigate('/community/experience')
+    }catch(error){
+      console.log(error)
+    }
+  };
+
+  const isFormValid = formData.title.trim() !== "" && formData.content.trim() !== "";
+
   return (
     <>
       <Topbar pageTitle={location.state.type}/>
@@ -31,11 +53,12 @@ export default function CommunityWritePage() {
       <S.BorderLine/>
       
       <S.FormContainer>
-        <form>
+        <form onSubmit={handleSubmit} style={{height:'100%'}}>
           <S.FormTitle type="text" name="title" value={formData.title} onChange={handleChange} required placeholder="제목"/>  
           <S.Line/>
           <S.FormTextArea name="content" value={formData.content} onChange={handleChange} required placeholder="내용을 입력하세요"/>
-          {/* <S.FormButton>글 등록</S.FormButton> */}
+          <br/>
+          <S.FormButton type="submit" $isActive={isFormValid}>글 등록</S.FormButton>
         </form>
       </S.FormContainer>
     </>

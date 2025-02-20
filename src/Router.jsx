@@ -11,7 +11,7 @@ import AddIngredients from "@/pages/AddIngredients";
 import RecipeCookingPage from "@/pages/RecipeCookingPage";
 import NeighborRecipe from "./components/community/NeighborRecipe";
 import NeighborExperience from "./components/community/NeighborExperience";
-import QandA from "./components/community/QandA";
+import CommunityPostDetail from "./pages/CommunityPostDetail"
 import CommunityWritePage from "./pages/CommunityWritePage";
 import WriteRecipePage from "./pages/WriteRecipePage";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
@@ -66,13 +66,17 @@ export const router = createBrowserRouter([
         path: "community", //이웃의 장 페이지
         element: <CommunityPage />,
         children: [
-          { index: true, element: <NeighborRecipe /> },
-          { path: "experience", element: <NeighborExperience /> },
-          { path: "q&a", element: <QandA /> },
-          { path: "write", element: <CommunityWritePage /> },
+
+          { index: true, element: <NeighborRecipe/> },
+          { path : ":type", element: <NeighborExperience/>},
+          { path: ":type/write", element:<CommunityWritePage/>},
+          { path: "post/:id", element:<CommunityPostDetail/>},
+
+          
 
           { path: "recipe/:id", element: <RecipeDetailPage /> },
           { path: "write-recipe", element: <WriteRecipePage /> },
+
         ],
       },
       {
