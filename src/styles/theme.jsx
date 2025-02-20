@@ -38,6 +38,7 @@ export const theme = {
     // thin(1), extralight(2), light(3), regular(4), medium(5), semibold(6), bold(7), extrabold(8), black(9)
 
     pre_regular_12: FONT({ family: "Pretendard", weight: 400, size: 12 }),
+    pre_medium_11: FONT({ family: "Pretendard", weight: 500, size: 11 }),
     pre_medium_13: FONT({ family: "Pretendard", weight: 500, size: 13 }),
     pre_semibold_13: FONT({ family: "Pretendard", weight: 600, size: 13 }),
     pre_medium_14: FONT({ family: "Pretendard", weight: 500, size: 14 }),

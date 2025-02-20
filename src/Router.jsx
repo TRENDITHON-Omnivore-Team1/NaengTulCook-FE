@@ -11,8 +11,8 @@ import AddIngredients from "@/pages/AddIngredients";
 import RecipeCookingPage from "@/pages/RecipeCookingPage";
 import NeighborRecipe from "./components/community/NeighborRecipe";
 import NeighborExperience from "./components/community/NeighborExperience";
-import QandA from './components/community/QandA';
 import CommunityWritePage from "./pages/CommunityWritePage";
+import CommunityPostDetail from "./pages/CommunityPostDetail"
 
 export const router = createBrowserRouter([
   {
@@ -65,9 +65,9 @@ export const router = createBrowserRouter([
         element: <CommunityPage/>,
         children: [
           { index: true, element: <NeighborRecipe/> },
-          { path : "experience", element: <NeighborExperience/>},
-          { path: "q&a", element: <QandA/>},
-          { path: "write", element:<CommunityWritePage/>}
+          { path : ":type", element: <NeighborExperience/>},
+          { path: ":type/write", element:<CommunityWritePage/>},
+          { path: "post/:id", element:<CommunityPostDetail/>},
         ],
       },
       {
