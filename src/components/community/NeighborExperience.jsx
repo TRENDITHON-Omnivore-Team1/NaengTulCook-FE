@@ -5,7 +5,7 @@ import arrow_down from "@/assets/community/arrow_down.svg"
 import { useState,useEffect } from "react"
 import { BackgroundDarkOverlay } from "@/styles/common/CommonStyleComp"
 import check  from '@/assets/refrigerator/check.svg';
-import { useParams } from "react-router-dom"
+import { useParams,useNavigate } from "react-router-dom"
 import { getNeighbor } from "@/apis/community/Neighbor"
 
 // const dummy={
@@ -23,6 +23,7 @@ export default function NeighborExperience(){
   const [isModal,setIsModal] = useState(false)
   const [data,setData] = useState([])
   const {type}=useParams()
+  const navigate = useNavigate()
   // console.log(type)
 
 
@@ -38,11 +39,15 @@ export default function NeighborExperience(){
     };
 
     fetchData(); 
-  }, []); 
+  }, [type,select]); 
+
+  const handlePostDetail = (id,type)=>{
+    // console.log(id,type)
+    navigate(`/community/${type}/${id}`)
+  } 
 
   return(
     <>
-    
     {isModal &&
       <BackgroundDarkOverlay>
         <S.ModalContainer>
@@ -51,14 +56,14 @@ export default function NeighborExperience(){
             setSelect('최신순')
             setIsModal(false)
             }}>
-            <S.FlexBoxText isSelected={select === '최신순'}>최신순</S.FlexBoxText>
+            <S.FlexBoxText $isSelected={select === '최신순'}>최신순</S.FlexBoxText>
             {select === '최신순' && <S.FlexBoxImg src={check}/>}
           </S.FlexBox>
           <S.FlexBox style={{marginTop:'26px'}} onClick={()=>{
             setSelect('인기순')
             setIsModal(false)
           }}>
-            <S.FlexBoxText isSelected={select === '인기순'} >인기순</S.FlexBoxText>
+            <S.FlexBoxText $isSelected={select === '인기순'} >인기순</S.FlexBoxText>
             {select === '인기순' && <S.FlexBoxImg src={check}/>}
           </S.FlexBox>
         </S.ModalContainer>
@@ -74,7 +79,7 @@ export default function NeighborExperience(){
 
         {data.map((d)=>{
         return(
-          <S.BoxContainer key={d.id}>
+          <S.BoxContainer key={d.id} onClick={()=>handlePostDetail(d.id,type)}>
             <S.Nickname>{d.userId}</S.Nickname>
             <S.Title>{d.title}</S.Title>
             <S.Content>{d.content}</S.Content>
