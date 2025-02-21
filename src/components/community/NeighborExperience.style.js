@@ -67,6 +67,7 @@ export const MainWrapper=styled.div`
 export const BoxContainer = styled.div`
   padding:13px 0 17px;
   border-bottom:1px solid #E6E6E6;
+  cursor: pointer;
 `;
 export const Nickname=styled.div`
   color: #888;
