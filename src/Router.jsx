@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
           { index: true, element: <NeighborRecipe/> },
           { path : ":type", element: <NeighborExperience/>},
           { path: ":type/write", element:<CommunityWritePage/>},
-          { path: "post/:id", element:<CommunityPostDetail/>},
+          { path: ":type/:id", element:<CommunityPostDetail/>},
 
           
 

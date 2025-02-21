@@ -45,7 +45,7 @@ export const FlexBox = styled.div`
   cursor:pointer;
 `;
 export const FlexBoxText = styled.div`
-  color: ${({ isSelected }) => (isSelected ? '#000' : '#BCBCBC')}; 
+  color: ${({ $isSelected }) => ($isSelected ? '#000' : '#BCBCBC')}; 
   font-family: Pretendard;
   font-size: 15px;
   font-style: normal;
@@ -60,13 +60,14 @@ export const FlexBoxImg = styled.img`
 
 
 export const MainWrapper=styled.div`
-  padding:25px;
+  padding:25px 25px 86px;
   position:relative;
 `;
 
 export const BoxContainer = styled.div`
   padding:13px 0 17px;
   border-bottom:1px solid #E6E6E6;
+  cursor: pointer;
 `;
 export const Nickname=styled.div`
   color: #888;

@@ -1,42 +1,35 @@
 import Topbar from "@/components/common/topbar/Topbar";
-import { Outlet, useNavigate,useLocation } from "react-router-dom";
-import {styled} from 'styled-components'
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import { styled } from "styled-components";
 import { FloatingButtonContainer } from "@/styles/common/CommonStyleComp";
-import write from '@/assets/community/write.svg'
+import write from "@/assets/community/write.svg";
 import { useState } from "react";
 
 const optionList = ["이웃 레시피", "이웃 경험 공유", "Q&A"];
 const pathList = ["/community", "/community/experience", "/community/q&a"];
-
-// const CommunityWrapper = styled.div`
-//   padding:0 30px;
-// `;
 
 const WritesWrapper = styled.div`
   position: absolute;
   bottom: 4.3rem;
   right: 8px;
 
-  display:flex;
+  display: flex;
   flex-direction: column;
-  gap:11px;
-  ${({theme})=>theme.fonts.gi_regular_10}
+  gap: 11px;
+  ${({ theme }) => theme.fonts.gi_regular_10}
 `;
 
 const Write = styled.div`
-  background-color:#1D1D1D;
+  background-color: #1d1d1d;
   color: white;
-  border-radius:50%;
-
-  width:45px;
-  height:45px;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-
-  cursor:pointer;
-`
-
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
 
 export default function CommunityPage() {
   const [isWrites, setIsWrites] = useState(false);
@@ -46,43 +39,50 @@ export default function CommunityPage() {
   const handleRouteChange = (index) => {
     navigate(pathList[index]);
   };
-  const handleGoCommunityWrite = (type)=>{
-    navigate(`/community/${type}/write`,{ state: { type: type } })
-  }
 
+  const handleGoCommunityWrite = (type) => {
+    navigate(`/community/${type}/write`, { state: { type } });
+  };
+
+  // 글쓰기 페이지 및 동적 경로 패턴 목록
   const writePaths = [
     "/community/experience/write",
     "/community/q&a/write",
-    "/community/post", 
   ];
 
-  // 현재 경로가 동적 경로 패턴을 포함하는지 체크
-  const isWritePage = writePaths.some((path) => {
-    const postRegex = /^\/community\/post\/\d+$/; 
- 
-    return (
-      location.pathname.match(postRegex) || 
-      writePaths.includes(location.pathname)
-    );
-  });
+  const dynamicPathPatterns = [
+    /^\/community\/[^/]+\/\d+$/,           // community/:type/:id (글 상세)
 
+  ];
+
+  // 현재 경로가 글쓰기 페이지거나 동적 경로에 해당하는지 확인
+  const isWritePage =
+    writePaths.includes(location.pathname) ||
+    dynamicPathPatterns.some((regex) => regex.test(location.pathname));
 
   return (
     <>
-
       {!isWritePage && (
-        <Topbar optionList={optionList} pathList={pathList} onOptionSelect={handleRouteChange} />
+        <Topbar
+          optionList={optionList}
+          pathList={pathList}
+          onOptionSelect={handleRouteChange}
+        />
       )}
 
       <Outlet />
+
       {!isWritePage && (
         <FloatingButtonContainer onClick={() => setIsWrites(!isWrites)}>
           <img src={write} alt="write" />
           {isWrites && (
             <WritesWrapper>
-              <Write onClick={() => handleGoCommunityWrite('q&a')}>Q&A</Write>
-              <Write onClick={() => handleGoCommunityWrite("experience")}>경험<br/>공유</Write>
-              <Write >레시피<br/>공유</Write>
+              <Write onClick={() => handleGoCommunityWrite("q&a")}>Q&A</Write>
+              <Write onClick={() => handleGoCommunityWrite("experience")}>
+                경험<br />
+                공유
+              </Write>
+              <Write>레시피<br />공유</Write>
             </WritesWrapper>
           )}
         </FloatingButtonContainer>
