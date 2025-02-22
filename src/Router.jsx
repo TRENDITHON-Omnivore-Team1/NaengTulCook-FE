@@ -1,9 +1,9 @@
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import RootLayout from "@/layouts/root-layout";
-import SplashPage from "@/pages/SplashPage";
+import SplashPage from "@/pages/sign/SplashPage";
 import MyPage from "@/pages/MyPage";
-import SignUpPage from "@/pages/SignUpPage";
-import LoginPage from "@/pages/LoginPage";
+import SignUpPage from "@/pages/sign/SignUpPage";
+import LoginPage from "@/pages/sign/LoginPage";
 import RefrigeratorPage from "@/pages/RefrigeratorPage";
 import RecipePage from "@/pages/RecipePage";
 import CommunityPage from "@/pages/CommunityPage";
@@ -11,10 +11,11 @@ import AddIngredients from "@/pages/AddIngredients";
 import RecipeCookingPage from "@/pages/RecipeCookingPage";
 import NeighborRecipe from "./components/community/NeighborRecipe";
 import NeighborExperience from "./components/community/NeighborExperience";
-import CommunityPostDetail from "./pages/CommunityPostDetail"
+import CommunityPostDetail from "./pages/CommunityPostDetail";
 import CommunityWritePage from "./pages/CommunityWritePage";
 import WriteRecipePage from "./pages/WriteRecipePage";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
+import PreInfoPage from "./pages/sign/PreInfoPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
   {
     path: "sign-up",
     element: <SignUpPage />,
+  },
+  {
+    path: "pre-info",
+    element: <PreInfoPage />,
   },
   {
     path: "/",
@@ -66,17 +71,13 @@ export const router = createBrowserRouter([
         path: "community", //이웃의 장 페이지
         element: <CommunityPage />,
         children: [
-
-          { index: true, element: <NeighborRecipe/> },
-          { path : ":type", element: <NeighborExperience/>},
-          { path: ":type/write", element:<CommunityWritePage/>},
-          { path: ":type/:id", element:<CommunityPostDetail/>},
-
-          
+          { index: true, element: <NeighborRecipe /> },
+          { path: ":type", element: <NeighborExperience /> },
+          { path: ":type/write", element: <CommunityWritePage /> },
+          { path: ":type/:id", element: <CommunityPostDetail /> },
 
           { path: "recipe/:id", element: <RecipeDetailPage /> },
           { path: "write-recipe", element: <WriteRecipePage /> },
-
         ],
       },
       {
