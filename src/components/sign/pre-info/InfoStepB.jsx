@@ -29,7 +29,7 @@ export default function InfoStepB({ register, step }) {
       {options.map((option) => (
         <label key={option.id}>
           <input
-            type="checkbox"
+            type="radio"
             value={option.value}
             {...register(fieldName, {
               validate: (value, allValues) => {

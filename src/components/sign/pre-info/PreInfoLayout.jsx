@@ -6,6 +6,11 @@ import InfoStepB from "./InfoStepB";
 import InfoStepC from "./InfoStepC";
 import InfoStepD from "./InfoStepD";
 import { putPreInfoNickname } from "@/apis/sign/pre-info/putPreInfoNickname";
+import { putPreInfoSkill } from "@/apis/sign/pre-info/putPreInfoSkill";
+import { putPreInfoAge } from "@/apis/sign/pre-info/putPreInfoAge";
+import { putPreInfoFamily } from "@/apis/sign/pre-info/putPreInfoFamily";
+import { putPreInfoFavorite } from "@/apis/sign/pre-info/putPreInfoFavorite";
+import { putPreInfoIngredient } from "@/apis/sign/pre-info/putPreInfoIngredient";
 
 const requiredFieldsByStep = {
   0: ["nickname"],
@@ -23,6 +28,7 @@ export default function PreInfoLayout() {
   // react-hook-form 설정
   const { register, handleSubmit, control } = useForm();
 
+  // 버튼 시각적 활성화...
   const currentRequiredFields = requiredFieldsByStep[currentStep] || ["nickname"];
   const currentValues = useWatch({ control, name: currentRequiredFields });
 
@@ -48,45 +54,56 @@ export default function PreInfoLayout() {
     try {
       switch (currentStep) {
         case 0: {
-          const response = await putPreInfoNickname({
+          await putPreInfoNickname({
             params: { nickname: data.nickname },
           });
-          console.log(response); // 나중에 삭제
           break;
         }
         case 1: {
-          const response = await putPreInfoNickname({
-            params: { nickname: data.nickname },
+          const ageMapping = {
+            "10대": 10,
+            "20대": 20,
+            "30대": 30,
+            "40대": 40,
+            "50대": 50,
+          };
+          const ageRange = ageMapping[data.age] || 60;
+          await putPreInfoAge({
+            params: {
+              ageRange,
+            },
           });
-          console.log(response); // 나중에 삭제
           break;
         }
         case 2: {
-          const response = await putPreInfoNickname({
-            params: { nickname: data.nickname },
+          await putPreInfoFamily({
+            params: { family: data.family },
           });
-          console.log(response); // 나중에 삭제
           break;
         }
         case 3: {
-          const response = await putPreInfoNickname({
-            params: { nickname: data.nickname },
+          const skillMapping = {
+            "완전 처음": 0,
+            "라면 끓이기 정도는 할 수 있어요": 1,
+            "레시피 보면 잘 따라해요": 2,
+            "요리하는 것이 익숙해요": 3,
+          };
+          const skill = skillMapping[data.skill] || 4;
+          await putPreInfoSkill({
+            params: { skill },
           });
-          console.log(response); // 나중에 삭제
           break;
         }
         case 4: {
-          const response = await putPreInfoNickname({
-            params: { nickname: data.nickname },
+          await putPreInfoFavorite({
+            body: data.favorite,
           });
-          console.log(response); // 나중에 삭제
           break;
         }
         default: {
-          const response = await putPreInfoNickname({
-            params: { nickname: data.nickname },
+          await putPreInfoIngredient({
+            body: data.ingredient,
           });
-          console.log(response); // 나중에 삭제
           break;
         }
       }
