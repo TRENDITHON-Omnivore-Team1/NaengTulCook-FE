@@ -128,8 +128,8 @@ export const Button = styled.button`
   padding:6px 16px;
   border-radius: 14px;
   border: 1px solid #1D1D1D;
-  background: #FFF;
-  color: #1D1D1D;
+  background-color: ${(props) => (props.$isEmpty ? 'white' : 'black')};
+  color: ${(props) => (props.$isEmpty ? 'black' : 'white')};
 
   font-family: Pretendard;
   font-size: 15px;
