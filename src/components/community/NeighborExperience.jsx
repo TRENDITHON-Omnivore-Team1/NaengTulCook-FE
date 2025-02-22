@@ -80,7 +80,7 @@ export default function NeighborExperience(){
         {data.map((d)=>{
         return(
           <S.BoxContainer key={d.id} onClick={()=>handlePostDetail(d.id,type)}>
-            <S.Nickname>{d.userId}</S.Nickname>
+            <S.Nickname>{d.nickname ? d.nickname : '익명'}</S.Nickname>
             <S.Title>{d.title}</S.Title>
             <S.Content>{d.content}</S.Content>
             <S.EtcContainer>
@@ -89,7 +89,7 @@ export default function NeighborExperience(){
              :<img src={star_gray} alt="star" style={{width:'14px',height:'14px',marginBottom:'4px'}}/>
              }         
               <S.StarNum>{d.likeCount}</S.StarNum>
-              <S.CommentText>댓글 {d.viewCount}</S.CommentText>
+              <S.CommentText>댓글 {d.commentCount}</S.CommentText>
             </S.EtcContainer>
          </S.BoxContainer>
         )
