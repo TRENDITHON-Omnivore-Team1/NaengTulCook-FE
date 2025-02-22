@@ -1,7 +1,11 @@
-export default function InfoStepA() {
+export default function InfoStepA({ register }) {
   return (
     <>
-      <p>A</p>
+      <input
+        type="text"
+        placeholder="닉네임을 입력해 주세요."
+        {...register("nickname", { required: "닉네임을 입력해 주세요." })}
+      />
     </>
   );
 }
