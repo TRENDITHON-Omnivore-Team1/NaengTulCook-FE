@@ -1,3 +1,5 @@
+import * as A from "./InfoStep.style";
+
 const options = [
   "곡류",
   "채소",

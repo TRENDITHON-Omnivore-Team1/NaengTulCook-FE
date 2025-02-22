@@ -1,3 +1,5 @@
+import * as A from "./InfoStep.style";
+
 const options = [
   "마라탕",
   "스테이크",

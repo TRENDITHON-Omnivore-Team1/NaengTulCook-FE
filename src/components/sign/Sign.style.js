@@ -21,7 +21,6 @@ export const StyledSignInput = styled.input`
   margin: 0 30px;
   padding: 0 24px;
   width: calc(100% - 60px);
-  max-width: 336px;
   height: 60px;
 
   /* display: flex; */
@@ -42,7 +41,8 @@ export const ErrorMessage = styled.p`
 `;
 
 export const ButtonContainer = styled.div`
-  margin-bottom: 40px;
+  position: absolute;
+  bottom: 40px;
   width: 100%;
 
   ${ColumnCenterCSS}

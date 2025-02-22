@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import * as A from "./PreInfoLayout.style";
+import * as S from "@/components/sign/Sign.style";
 import InfoStepA from "./InfoStepA";
 import InfoStepB from "./InfoStepB";
 import InfoStepC from "./InfoStepC";
@@ -11,6 +13,7 @@ import { putPreInfoAge } from "@/apis/sign/pre-info/putPreInfoAge";
 import { putPreInfoFamily } from "@/apis/sign/pre-info/putPreInfoFamily";
 import { putPreInfoFavorite } from "@/apis/sign/pre-info/putPreInfoFavorite";
 import { putPreInfoIngredient } from "@/apis/sign/pre-info/putPreInfoIngredient";
+import BigButton from "@/components/common/button/BigButton";
 
 const requiredFieldsByStep = {
   0: ["nickname"],
@@ -19,6 +22,27 @@ const requiredFieldsByStep = {
   3: ["skill"],
   4: ["favorite"],
   5: ["ingredient"],
+};
+const stepTitle = [
+  "뭐라고 불러드릴까요?",
+  "나이대를 알려주세요",
+  "가구유형은 어떻게 되시나요?",
+  "요리실력은 어느정도 인가요?",
+  "취향을 선택해주세요",
+  "항상 가지고 있는 재료를 알려주세요",
+];
+const ageMapping = {
+  "10대": 10,
+  "20대": 20,
+  "30대": 30,
+  "40대": 40,
+  "50대": 50,
+};
+const skillMapping = {
+  "완전 처음": 0,
+  "라면 끓이기 정도는 할 수 있어요": 1,
+  "레시피 보면 잘 따라해요": 2,
+  "요리하는 것이 익숙해요": 3,
 };
 
 export default function PreInfoLayout() {
@@ -31,13 +55,16 @@ export default function PreInfoLayout() {
   // 버튼 시각적 활성화...
   const currentRequiredFields = requiredFieldsByStep[currentStep] || ["nickname"];
   const currentValues = useWatch({ control, name: currentRequiredFields });
+  const nickname = useWatch({ control, name: "nickname" });
 
   const [isButtonActive, setIsButtonActive] = useState(false);
   useEffect(() => {
     if (currentValues) {
       if (currentStep === 0) {
         // input type이 text인 경우
-        const isAllFilled = currentValues.every((value) => value && value.trim() !== "");
+        const isAllFilled = currentValues.every(
+          (value) => value && value.trim() !== "" && nickname?.length <= 10
+        );
         setIsButtonActive(isAllFilled);
       } else {
         // input type이 checkbox인 경우
@@ -60,13 +87,6 @@ export default function PreInfoLayout() {
           break;
         }
         case 1: {
-          const ageMapping = {
-            "10대": 10,
-            "20대": 20,
-            "30대": 30,
-            "40대": 40,
-            "50대": 50,
-          };
           const ageRange = ageMapping[data.age] || 60;
           await putPreInfoAge({
             params: {
@@ -82,12 +102,6 @@ export default function PreInfoLayout() {
           break;
         }
         case 3: {
-          const skillMapping = {
-            "완전 처음": 0,
-            "라면 끓이기 정도는 할 수 있어요": 1,
-            "레시피 보면 잘 따라해요": 2,
-            "요리하는 것이 익숙해요": 3,
-          };
           const skill = skillMapping[data.skill] || 4;
           await putPreInfoSkill({
             params: { skill },
@@ -118,36 +132,42 @@ export default function PreInfoLayout() {
     }
   };
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    handleSubmit(onSubmit)();
-  };
-
   // localStorage.setItem("isFirstLogin", true); // 튜토리얼 화면용(정보 추가하는 페이지에)
   return (
-    <>
-      <h1>{currentStep + 1}</h1>
+    <A.PageLayout>
+      {/* 상단 */}
+      <A.StepBarList>
+        {[...Array(6)].map((_, i) => (
+          <A.StepBarBox key={i} $isBlack={i <= currentStep} />
+        ))}
+      </A.StepBarList>
+      <A.StepTitle>{stepTitle[currentStep]}</A.StepTitle>
 
-      <form onSubmit={handleFormSubmit}>
+      {/* 폼 내용 */}
+      <A.InfoForm onSubmit={handleSubmit(onSubmit)}>
         {currentStep == 0 ? (
-          <InfoStepA register={register} />
+          <InfoStepA register={register} control={control} nickname={nickname} />
         ) : currentStep == 1 ? (
-          <InfoStepB register={register} step={1} />
+          <InfoStepB register={register} step={1} control={control} />
         ) : currentStep == 2 ? (
-          <InfoStepB register={register} step={2} />
+          <InfoStepB register={register} step={2} control={control} />
         ) : currentStep == 3 ? (
-          <InfoStepB register={register} step={3} />
+          <InfoStepB register={register} step={3} control={control} />
         ) : currentStep == 4 ? (
           <InfoStepC register={register} />
         ) : (
           <InfoStepD register={register} />
         )}
 
-        <button onClick={handleSubmit(onSubmit)} type="button">
-          {currentStep == 5 ? "완료" : "다음"}
-        </button>
-        <p>{isButtonActive ? "굳" : "에러"}</p>
-      </form>
-    </>
+        {/* 버튼 */}
+        <S.ButtonContainer>
+          <BigButton
+            type="submit"
+            buttonText={currentStep == 5 ? "완료" : "다음"}
+            $isWhiteButton={!isButtonActive}
+          />
+        </S.ButtonContainer>
+      </A.InfoForm>
+    </A.PageLayout>
   );
 }

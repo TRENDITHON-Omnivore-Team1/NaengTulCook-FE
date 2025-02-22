@@ -1,3 +1,6 @@
+import { useWatch } from "react-hook-form";
+import * as A from "./InfoStep.style";
+
 const stepOptions1 = [
   { id: "age-0", value: "10대", style: "short" },
   { id: "age-1", value: "20대", style: "short" },
@@ -19,16 +22,21 @@ const stepOptions3 = [
   { id: "skill-4", value: "고급 요리도 할 줄 알아요", buttonStyle: "long" },
 ];
 
-export default function InfoStepB({ register, step }) {
+export default function InfoStepB({ register, step, control }) {
   const options = step === 1 ? stepOptions1 : step === 2 ? stepOptions2 : stepOptions3;
-
   const fieldName = step === 1 ? "age" : step === 2 ? "family" : "skill";
 
+  const selectedValue = useWatch({ control, name: fieldName });
+
   return (
-    <>
+    <A.CheckBoxContainer>
       {options.map((option) => (
-        <label key={option.id}>
-          <input
+        <A.CheckBoxButton
+          key={option.id}
+          $isActive={selectedValue === option.value}
+          $isLong={option.buttonStyle == "long"}
+        >
+          <A.CheckBoxInput
             type="radio"
             value={option.value}
             {...register(fieldName, {
@@ -41,8 +49,8 @@ export default function InfoStepB({ register, step }) {
             })}
           />
           {option.value}
-        </label>
+        </A.CheckBoxButton>
       ))}
-    </>
+    </A.CheckBoxContainer>
   );
 }
