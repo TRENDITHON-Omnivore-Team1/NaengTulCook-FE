@@ -148,15 +148,15 @@ export default function PreInfoLayout() {
         {currentStep == 0 ? (
           <InfoStepA register={register} control={control} nickname={nickname} />
         ) : currentStep == 1 ? (
-          <InfoStepB register={register} step={1} control={control} />
+          <InfoStepB register={register} control={control} step={1} />
         ) : currentStep == 2 ? (
-          <InfoStepB register={register} step={2} control={control} />
+          <InfoStepB register={register} control={control} step={2} />
         ) : currentStep == 3 ? (
-          <InfoStepB register={register} step={3} control={control} />
+          <InfoStepB register={register} control={control} step={3} />
         ) : currentStep == 4 ? (
-          <InfoStepC register={register} />
+          <InfoStepC register={register} control={control} />
         ) : (
-          <InfoStepD register={register} />
+          <InfoStepD register={register} control={control} />
         )}
 
         {/* 버튼 */}
