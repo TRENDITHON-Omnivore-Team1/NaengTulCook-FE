@@ -32,8 +32,8 @@ const Write = styled.div`
 `;
 
 const MainWrapper = styled.div`
-  height: calc(100vh - 63px);
-  overflow-y:auto;
+  height: ${({ $isWritePage }) => ($isWritePage ? "100vh" : "calc(100vh - 63px)")};
+  overflow:auto;
 `;
 
 export default function CommunityPage() {
@@ -74,7 +74,7 @@ export default function CommunityPage() {
           onOptionSelect={handleRouteChange}
         />
       )}
-      <MainWrapper>
+      <MainWrapper $isWritePage={isWritePage}>
         <Outlet />
       </MainWrapper>
 
