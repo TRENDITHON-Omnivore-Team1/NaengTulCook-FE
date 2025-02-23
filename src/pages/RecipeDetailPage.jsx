@@ -32,7 +32,7 @@ export default function RecipeDetailPage() {
     <>
       <RecipeDetail />
       <GradationWhite>
-        <BigButton onClick={handleMoveToCooking} type="button" buttonText="요리하기" />
+        <BigButton onClickFn={handleMoveToCooking} type="button" buttonText="요리하기" />
       </GradationWhite>
     </>
   );
