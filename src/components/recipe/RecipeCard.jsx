@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import * as A from "./RecipeCard.style";
 import fireSvg from "@/assets/icons/recipe/icon_fire.svg";
 import clockSvg from "@/assets/icons/recipe/icon_clock.svg";
-import { useNavigate } from "react-router-dom";
+import defaultSvg from "@/assets/default-img/default_thumbnail.svg";
 
 export default function RecipeCard({
   forward_name,
@@ -10,18 +11,19 @@ export default function RecipeCard({
   optional_absence = [],
   level,
   time,
+  picture,
 }) {
   const navigate = useNavigate();
 
   const handleMoveToCooking = () => {
-    navigate(`/recipe/cooking?recipeName=${name}`); // id값 수정
+    navigate(`/recipe/cooking?recipeName=${name}&picture=${picture}`); // id값 수정
   };
 
   return (
     <>
       <A.CompContainer>
         <A.ImgContainer>
-          <A.ThumbnailImg src="http://test.api.weniv.co.kr/asset/img/7/thumbnailImg.jpg" alt="" />
+          {picture ? <A.ThumbnailImg src={picture} /> : <A.ThumbnailImg src={defaultSvg} />}
           <A.OverlayGradation />
         </A.ImgContainer>
         <A.CardSubtitle>{forward_name}</A.CardSubtitle>

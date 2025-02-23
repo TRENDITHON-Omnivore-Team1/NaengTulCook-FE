@@ -1,36 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getCookCreate } from "@/apis/recipe/getCookCreate";
 import CookingCarousel from "@/components/recipe-cooking/CookingCarousel";
+import { RecipeCooking } from "@/dummy/RecipeCooking.js";
 
 export default function RecipeCookingPage() {
   const [searchParam] = useSearchParams();
   const recipeName = searchParam.get("recipeName");
+  const picture = searchParam.get("picture");
 
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
+  const [data, setData] = useState(RecipeCooking);
 
-  useState(() => {
+  useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await getCookCreate(recipeName);
+      const response = await getCookCreate(recipeName);
 
-        setData(response);
-        setIsLoading(true);
-      } catch {
-        setIsError(true);
-      }
+      // console.log("response: ", response); // 나중에 삭제!!
+      setData(response);
     };
 
     if (recipeName) {
-      // fetchData();
+      fetchData();
     }
   }, [recipeName]);
 
   return (
     <>
-      <CookingCarousel data={data} isLoading={isLoading} isError={isError} />
+      <CookingCarousel data={data} picture={picture} />
     </>
   );
 }

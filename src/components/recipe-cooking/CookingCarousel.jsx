@@ -6,10 +6,11 @@ import flagActiveSvg from "@/assets/icons/recipe/icon_flag_active.svg";
 import CookingStepList from "./CookingStepList";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import defaultSvg from "@/assets/default-img/default_thumbnail.svg";
 
 const stepTitle = ["준비물 준비", "조리하기", "간 맞추기", "플레이팅"];
 
-export default function CookingCarousel() {
+export default function CookingCarousel({ data, picture }) {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -27,7 +28,7 @@ export default function CookingCarousel() {
   return (
     <>
       <A.CarouselContent>
-        <A.ImgContainer src={"http://test.api.weniv.co.kr/asset/img/6/thumbnailImg.jpg"} />
+        {picture ? <A.ImgContainer src={picture} /> : <A.ImgContainer src={defaultSvg} />}
 
         <A.ContentContainer>
           <A.ContentTitle>{stepTitle[currentStep]}</A.ContentTitle>
@@ -48,11 +49,17 @@ export default function CookingCarousel() {
           </Row>
 
           {/* 쿠킹 재료 */}
-          {currentStep == 0 && <CookingIngredients />}
+          {currentStep == 0 && (
+            <CookingIngredients
+              ingredients={data?.ingredients}
+              seasoning={data?.seasoning}
+              tool={data?.tool}
+            />
+          )}
           {/* 조리하기 */}
-          {currentStep == 1 && <CookingStepList />}
-          {currentStep == 2 && <CookingStepList />}
-          {currentStep == 3 && <CookingStepList />}
+          {currentStep == 1 && <CookingStepList data={data?.recipeCook} />}
+          {currentStep == 2 && <CookingStepList data={data?.recipeSeasoning} />}
+          {currentStep == 3 && <CookingStepList data={data?.recipePlating} />}
         </A.ContentContainer>
 
         {/* 단계 이동 버튼 */}

@@ -120,9 +120,9 @@ export const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     position: relative;
   }
-  /* ::-webkit-scrollbar{
+  ::-webkit-scrollbar{
     display: none;
-  } */
+  }
 
   li{
     list-style: none;
