@@ -129,6 +129,6 @@ export const InputItemContainer = styled.label`
   align-items: center;
   row-gap: 8px;
 `;
-export const Container88 = styled.button`
+export const Container88 = styled.div`
   ${InputItemImgContainer}
 `;
