@@ -23,6 +23,7 @@ export default function CookingCarousel({ data }) {
       navigate("/recipe");
     }
   };
+  console.log("data: ", data);
 
   return (
     <>
