@@ -31,6 +31,11 @@ const Write = styled.div`
   cursor: pointer;
 `;
 
+const MainWrapper = styled.div`
+  height: calc(100vh - 63px);
+  overflow-y:auto;
+`;
+
 export default function CommunityPage() {
   const [isWrites, setIsWrites] = useState(false);
   const navigate = useNavigate();
@@ -69,8 +74,9 @@ export default function CommunityPage() {
           onOptionSelect={handleRouteChange}
         />
       )}
-
-      <Outlet />
+      <MainWrapper>
+        <Outlet />
+      </MainWrapper>
 
       {!isWritePage && (
         <FloatingButtonContainer onClick={() => setIsWrites(!isWrites)}>
