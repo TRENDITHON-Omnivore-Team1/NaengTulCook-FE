@@ -7,6 +7,7 @@ import { RecipeCooking } from "@/dummy/RecipeCooking.js";
 export default function RecipeCookingPage() {
   const [searchParam] = useSearchParams();
   const recipeName = searchParam.get("recipeName");
+  const picture = searchParam.get("picture");
 
   const [data, setData] = useState(RecipeCooking);
 
@@ -25,7 +26,7 @@ export default function RecipeCookingPage() {
 
   return (
     <>
-      <CookingCarousel data={data} />
+      <CookingCarousel data={data} picture={picture} />
     </>
   );
 }

@@ -10,7 +10,7 @@ import defaultSvg from "@/assets/default-img/default_thumbnail.svg";
 
 const stepTitle = ["준비물 준비", "조리하기", "간 맞추기", "플레이팅"];
 
-export default function CookingCarousel({ data }) {
+export default function CookingCarousel({ data, picture }) {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
 
@@ -24,12 +24,11 @@ export default function CookingCarousel({ data }) {
       navigate("/recipe");
     }
   };
-  console.log("data: ", data);
 
   return (
     <>
       <A.CarouselContent>
-        <A.ImgContainer src={defaultSvg} />
+        {picture ? <A.ImgContainer src={picture} /> : <A.ImgContainer src={defaultSvg} />}
 
         <A.ContentContainer>
           <A.ContentTitle>{stepTitle[currentStep]}</A.ContentTitle>
