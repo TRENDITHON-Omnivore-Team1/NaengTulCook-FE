@@ -24,7 +24,7 @@ export default function RecipeList() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await getRecipes();
-      // console.log(response); // 로그 나중에 삭제
+      console.log(response); // 로그 나중에 삭제
       setRecipeData(response);
     };
 

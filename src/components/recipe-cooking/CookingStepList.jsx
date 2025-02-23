@@ -1,6 +1,8 @@
 import * as A from "./Cooking.style";
 
-export default function CookingStepList() {
+export default function CookingStepList({ data }) {
+  console.log("data: ", data); // 나중에 삭제
+
   return (
     <>
       {/* 맵 함수 추가 */}

@@ -24,7 +24,7 @@ export default function RecipeCookingPage() {
     };
 
     if (recipeName) {
-      // fetchData();
+      fetchData();
     }
   }, [recipeName]);
 
