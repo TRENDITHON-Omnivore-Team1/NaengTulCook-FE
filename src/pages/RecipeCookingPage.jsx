@@ -9,20 +9,13 @@ export default function RecipeCookingPage() {
   const recipeName = searchParam.get("recipeName");
 
   const [data, setData] = useState(RecipeCooking);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const response = await getCookCreate(recipeName);
+      const response = await getCookCreate(recipeName);
 
-        // console.log("response: ", response); // 나중에 삭제!!
-        setData(response);
-        setIsLoading(false);
-      } catch {
-        setIsLoading(false);
-      }
+      // console.log("response: ", response); // 나중에 삭제!!
+      setData(response);
     };
 
     if (recipeName) {
@@ -32,7 +25,7 @@ export default function RecipeCookingPage() {
 
   return (
     <>
-      <CookingCarousel data={data} isLoading={isLoading} />
+      <CookingCarousel data={data} />
     </>
   );
 }

@@ -6,6 +6,7 @@ import flagActiveSvg from "@/assets/icons/recipe/icon_flag_active.svg";
 import CookingStepList from "./CookingStepList";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import defaultSvg from "@/assets/default-img/default_thumbnail.svg";
 
 const stepTitle = ["준비물 준비", "조리하기", "간 맞추기", "플레이팅"];
 
@@ -28,7 +29,7 @@ export default function CookingCarousel({ data }) {
   return (
     <>
       <A.CarouselContent>
-        <A.ImgContainer src={"http://test.api.weniv.co.kr/asset/img/6/thumbnailImg.jpg"} />
+        <A.ImgContainer src={defaultSvg} />
 
         <A.ContentContainer>
           <A.ContentTitle>{stepTitle[currentStep]}</A.ContentTitle>

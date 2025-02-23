@@ -3,7 +3,7 @@ import * as A from "./Cooking.style";
 import defaultSvg from "@/assets/default-img/default_recipe_cook.svg";
 
 export default function CookingIngredients({ ingredients, seasoning, tool }) {
-  console.log("ingredients: ", ingredients, "seasoning: ", seasoning, "tool: ", tool); // 나중에 삭제
+  // console.log("ingredients: ", ingredients, "seasoning: ", seasoning, "tool: ", tool); // 나중에 삭제
 
   return (
     <>
