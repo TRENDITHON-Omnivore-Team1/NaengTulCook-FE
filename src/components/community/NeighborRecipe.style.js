@@ -36,6 +36,7 @@ export const SubText2 = styled.div`
   color: #888;
   ${({theme})=>theme.fonts.pre_medium_11};
   line-height: 24px;
+  cursor:pointer;
   text-decoration-line: underline;
   /* text-decoration-style: solid;
   text-decoration-skip-ink: auto;
@@ -57,6 +58,8 @@ export const CardContainer = styled.div`
   display:flex;
   flex-direction:column;
   gap:6px;
+
+  cursor:pointer;
 `;
 export const CardImage = styled.img`
   width: ${props => props.$width}px;
@@ -80,6 +83,8 @@ export const ColFlexItem = styled.div`
   gap:16px;
   /* height:100px; */
   border-bottom: #E6E6E6 solid 1px;
+
+  cursor:pointer;
 `;
 export const RoundImg = styled.img`
   width: 73px;
