@@ -25,7 +25,7 @@ export default function NeighborExperience(){
   const {type}=useParams()
   const navigate = useNavigate()
   // console.log(type)
-
+  
 
   useEffect(() => {
     const fetchData = async () => {
