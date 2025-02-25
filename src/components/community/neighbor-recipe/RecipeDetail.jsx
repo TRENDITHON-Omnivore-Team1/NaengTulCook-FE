@@ -6,8 +6,12 @@ import starSvg from "@/assets/icons/recipe/icon_star.svg";
 import starActiveSvg from "@/assets/icons/recipe/icon_star_active.svg";
 import { useState } from "react";
 import { PostRecipeShare } from "@/apis/community/recipe-share/PostRecipeShare";
+import { useLocation } from "react-router-dom";
 
 export default function RecipeDetail({ data, postId }) {
+  const location = useLocation();
+  const { picture, title, userNickname } = location.state || {};
+
   const userId = localStorage.getItem("userId");
   console.log(data);
 
@@ -32,12 +36,16 @@ export default function RecipeDetail({ data, postId }) {
     <A.PageLayout>
       {/* 썸네일 */}
       <A.ImgContainer>
-        <A.ThumbnailImg src={defaultSvg} />
+        {picture ? (
+          <A.ThumbnailImg src={`http://13.211.69.139:8080${picture}`} />
+        ) : (
+          <A.ThumbnailImg src={defaultSvg} />
+        )}
         <A.OverlayGradation />
       </A.ImgContainer>
 
       {/* 기본 정보 */}
-      <A.CardTitle>누가비벼도 맛있는 비빔국수 레시피</A.CardTitle>
+      <A.CardTitle>{title ? title : "누가비벼도 맛있는 비빔국수 레시피"}</A.CardTitle>
 
       <A.SubInfoWrapper>
         <A.ChipList>
@@ -63,7 +71,7 @@ export default function RecipeDetail({ data, postId }) {
 
       {/* 프로필 정보 */}
       <A.ProfileContainer>
-        <A.BoldText>요리천재</A.BoldText>
+        <A.BoldText>{userNickname ? userNickname : "요리천재"}</A.BoldText>
         <A.SubProfileInfo>
           <p>20대</p>
           <p>1인 가구</p>
