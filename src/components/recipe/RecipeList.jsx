@@ -6,9 +6,12 @@ import RecipeCard from "@/components/recipe/RecipeCard";
 import { useEffect, useState } from "react";
 import { getRecipes } from "@/apis/recipe/getRecipes";
 import { RecipesRecommend } from "@/dummy/RecipesRecommend"; // 나중에 삭제
+import { useSearchParams } from "react-router-dom";
 
 export default function RecipeList() {
   const [recipeData, setRecipeData] = useState([]);
+  const [searchParams] = useSearchParams();
+  const name = searchParams.get("name") || "추천 레시피";
 
   const settings = {
     focusOnSelect: true,
@@ -34,7 +37,7 @@ export default function RecipeList() {
       console.log("에러: ", error.message);
       setRecipeData(RecipesRecommend); // 목파일 - 나중에 수정
     }
-  }, []);
+  }, [name]);
 
   return (
     <A.SliderContainer>
