@@ -33,7 +33,7 @@ const Write = styled.div`
 
 const MainWrapper = styled.div`
   height: ${({ $isWritePage }) => ($isWritePage ? "100vh" : "calc(100vh - 63px)")};
-  overflow:auto;
+  overflow: auto;
 `;
 
 export default function CommunityPage() {
@@ -53,11 +53,11 @@ export default function CommunityPage() {
   const writePaths = [
     "/community/experience/write",
     "/community/q&a/write",
+    "/community/write-recipe",
   ];
 
   const dynamicPathPatterns = [
-    /^\/community\/[^/]+\/\d+$/,           // community/:type/:id (글 상세)
-
+    /^\/community\/[^/]+\/\d+$/, // community/:type/:id (글 상세)
   ];
 
   // 현재 경로가 글쓰기 페이지거나 동적 경로에 해당하는지 확인
@@ -68,11 +68,7 @@ export default function CommunityPage() {
   return (
     <>
       {!isWritePage && (
-        <Topbar
-          optionList={optionList}
-          pathList={pathList}
-          onOptionSelect={handleRouteChange}
-        />
+        <Topbar optionList={optionList} pathList={pathList} onOptionSelect={handleRouteChange} />
       )}
       <MainWrapper $isWritePage={isWritePage}>
         <Outlet />
@@ -85,10 +81,15 @@ export default function CommunityPage() {
             <WritesWrapper>
               <Write onClick={() => handleGoCommunityWrite("q&a")}>Q&A</Write>
               <Write onClick={() => handleGoCommunityWrite("experience")}>
-                경험<br />
+                경험
+                <br />
                 공유
               </Write>
-              <Write>레시피<br />공유</Write>
+              <Write onClick={() => navigate("/community/write-recipe")}>
+                레시피
+                <br />
+                공유
+              </Write>
             </WritesWrapper>
           )}
         </FloatingButtonContainer>

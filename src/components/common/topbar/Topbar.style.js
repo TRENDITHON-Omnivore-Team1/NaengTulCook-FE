@@ -15,6 +15,21 @@ export const CompContainer = styled.div`
   background-color: #fff;
   color: #1d1d1d;
 `;
+export const CompContainerSec = styled.div`
+  position: sticky;
+  top: 0;
+
+  padding-top: 8px;
+  width: 100%;
+  max-width: 500px;
+
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
+  align-items: center;
+
+  background-color: #fff;
+  color: #1d1d1d;
+`;
 export const ButtonArea = styled.button`
   position: sticky;
   ${RowCenterCSS}
@@ -30,6 +45,12 @@ export const IconImg = styled.img`
   width: 22px;
   height: 12px;
   margin-left: 8px;
+`;
+export const Icon28Img = styled.img`
+  width: 28px;
+  height: 28px;
+  margin-left: 12px;
+  cursor: pointer;
 `;
 
 // 드롭다운

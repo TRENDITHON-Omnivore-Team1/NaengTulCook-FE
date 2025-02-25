@@ -10,6 +10,7 @@ export default function RootLayout() {
     "/refrigerator/add-ingredient",
     "/community/experience/write",
     "/community/q&a/write",
+    "/community/write-recipe",
   ];
 
   // 네비게이션 바가 필요 없는 동적 경로
