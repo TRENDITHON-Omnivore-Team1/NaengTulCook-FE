@@ -13,8 +13,8 @@ import NeighborRecipe from "./components/community/NeighborRecipe";
 import NeighborExperience from "./components/community/NeighborExperience";
 import CommunityPostDetail from "./pages/CommunityPostDetail";
 import CommunityWritePage from "./pages/CommunityWritePage";
-import WriteRecipePage from "./pages/WriteRecipePage";
-import RecipeDetailPage from "./pages/RecipeDetailPage";
+import WriteRecipePage from "./pages/neighbor-recipe/WriteRecipePage";
+import RecipeDetailPage from "./pages/neighbor-recipe/RecipeDetailPage";
 import PreInfoPage from "./pages/sign/PreInfoPage";
 
 export const router = createBrowserRouter([

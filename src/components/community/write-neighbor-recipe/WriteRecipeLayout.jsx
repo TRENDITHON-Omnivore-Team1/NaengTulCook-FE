@@ -32,6 +32,9 @@ export default function WriteRecipeLayout() {
     defaultValues: {
       hour: 0,
       minute: 0,
+      ingredient: [{ name: "", amount: "" }],
+      seasoning: [{ name: "", amount: "" }],
+      tool: [{ name: "" }],
     },
   });
 
@@ -108,7 +111,7 @@ export default function WriteRecipeLayout() {
         {currentStep == 0 ? (
           <RecipeStepA register={register} />
         ) : currentStep == 1 ? (
-          <RecipeStepB register={register} />
+          <RecipeStepB register={register} control={control} />
         ) : (
           <RecipeStepC register={register} />
         )}
