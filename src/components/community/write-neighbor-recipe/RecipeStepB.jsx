@@ -1,7 +1,9 @@
 import { useFieldArray } from "react-hook-form";
 import * as A from "./RecipeStep.style";
+import appendSvg from "@/assets/neighbor-recipe-write/button_append.svg";
+import removeSvg from "@/assets/neighbor-recipe-write/button_remove.svg";
 
-export default function RecipeStepB({ register, control }) {
+export default function RecipeStepB({ register, control, ingredient, seasoning, tool }) {
   // useFieldArray로 ingredients라는 배열 필드를 관리
   const {
     fields: ingreFields,
@@ -56,76 +58,79 @@ export default function RecipeStepB({ register, control }) {
 
   return (
     <>
-      <h2>식재료 등록</h2>
-      {ingreFields.map((field, index) => (
-        <div key={field.id}>
-          <input
-            type="text"
-            placeholder="재료 이름"
-            {...register(`ingredient.${index}.name`, {
-              required: "재료 이름을 입력해주세요.",
-            })}
-          />
-          <input
-            type="text"
-            placeholder="용량"
-            {...register(`ingredient.${index}.amount`, {
-              required: "용량을 입력해주세요.",
-            })}
-          />
-          <button type="button" onClick={() => handleRemove(ingreRemove, ingreFields, index)}>
-            삭제
-          </button>
-        </div>
-      ))}
-      <button type="button" onClick={handlePlusIngredient}>
-        +
-      </button>
+      <A.InputSetTitle>식재료 등록</A.InputSetTitle>
+      <A.IngreWrapper>
+        {ingreFields.map((field, index) => (
+          <A.IngreTextInputList key={field.id}>
+            <A.IngreTextInput
+              type="text"
+              placeholder="재료 이름"
+              {...register(`ingredient.${index}.name`, {
+                required: "재료 이름을 입력해주세요.",
+              })}
+            />
+            <A.IngreTextInput
+              type="text"
+              placeholder="용량"
+              {...register(`ingredient.${index}.amount`, {
+                required: "용량을 입력해주세요.",
+              })}
+            />
+            <A.IngreButtonImg
+              src={removeSvg}
+              onClick={() => handleRemove(ingreRemove, ingreFields, index)}
+            />
+          </A.IngreTextInputList>
+        ))}
+        <A.IngreButtonImg src={appendSvg} onClick={handlePlusIngredient} />
+      </A.IngreWrapper>
 
-      <h2>양념재료 등록</h2>
-      {seaFields.map((field, index) => (
-        <div key={field.id}>
-          <input
-            type="text"
-            placeholder="재료 이름"
-            {...register(`seasoning.${index}.name`, {
-              required: "재료 이름을 입력해주세요.",
-            })}
-          />
-          <input
-            type="text"
-            placeholder="용량"
-            {...register(`seasoning.${index}.amount`, {
-              required: "용량을 입력해주세요.",
-            })}
-          />
-          <button type="button" onClick={() => handleRemove(seaRemove, seaFields, index)}>
-            삭제
-          </button>
-        </div>
-      ))}
-      <button type="button" onClick={handlePlusSeasoning}>
-        +
-      </button>
+      <A.InputSetTitle>양념재료 등록</A.InputSetTitle>
+      <A.IngreWrapper>
+        {seaFields.map((field, index) => (
+          <A.IngreTextInputList key={field.id}>
+            <A.IngreTextInput
+              type="text"
+              placeholder="재료 이름"
+              {...register(`seasoning.${index}.name`, {
+                required: "재료 이름을 입력해주세요.",
+              })}
+            />
+            <A.IngreTextInput
+              type="text"
+              placeholder="용량"
+              {...register(`seasoning.${index}.amount`, {
+                required: "용량을 입력해주세요.",
+              })}
+            />
+            <A.IngreButtonImg
+              src={removeSvg}
+              onClick={() => handleRemove(seaRemove, seaFields, index)}
+            />
+          </A.IngreTextInputList>
+        ))}
+        <A.IngreButtonImg src={appendSvg} onClick={handlePlusSeasoning} />
+      </A.IngreWrapper>
 
-      <h2>도구 등록</h2>
-      {toolFields.map((field, index) => (
-        <div key={field.id}>
-          <input
-            type="text"
-            placeholder="재료 이름"
-            {...register(`tool.${index}.name`, {
-              required: "재료 이름을 입력해주세요.",
-            })}
-          />
-          <button type="button" onClick={() => handleRemove(toolRemove, toolFields, index)}>
-            삭제
-          </button>
-        </div>
-      ))}
-      <button type="button" onClick={handlePlusTool}>
-        +
-      </button>
+      <A.InputSetTitle>도구 등록</A.InputSetTitle>
+      <A.IngreWrapper>
+        {toolFields.map((field, index) => (
+          <A.IngreTextInputList key={field.id}>
+            <A.IngreTextInput
+              type="text"
+              placeholder="재료 이름"
+              {...register(`tool.${index}.name`, {
+                required: "재료 이름을 입력해주세요.",
+              })}
+            />
+            <A.IngreButtonImg
+              src={removeSvg}
+              onClick={() => handleRemove(toolRemove, toolFields, index)}
+            />
+          </A.IngreTextInputList>
+        ))}
+        <A.IngreButtonImg src={appendSvg} onClick={handlePlusTool} />
+      </A.IngreWrapper>
     </>
   );
 }

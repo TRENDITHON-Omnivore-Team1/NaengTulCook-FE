@@ -1,3 +1,4 @@
+import { ColumnCenterCSS } from "@/styles/layouts/Column";
 import { RowCenterCSS } from "@/styles/layouts/Row";
 import styled, { css } from "styled-components";
 
@@ -135,4 +136,42 @@ export const ImagePreview = styled.img`
   width: 76px;
   height: 76px;
   object-fit: cover;
+`;
+// step2 재료
+export const IngreWrapper = styled.div`
+  ${ColumnCenterCSS}
+  justify-content: start;
+  margin: 12px 0 34px 0;
+`;
+export const IngreTextInputList = styled.div`
+  ${RowCenterCSS}
+  width: 100%;
+  gap: 14px;
+  margin: 12px 0;
+`;
+export const IngreTextInput = styled.input`
+  ${InputStyle}
+  ${RowCenterCSS}
+  text-align: center;
+  margin: 0;
+  width: 108px;
+  height: 42px;
+  border: 1px solid #aaaaaa;
+`;
+export const IngreButtonImg = styled.img`
+  width: 40px;
+  height: 40px;
+
+  cursor: pointer;
+`;
+
+// 조리방법
+export const RecipeTextInput = styled.input`
+  ${InputStyle}
+  ${RowCenterCSS}
+  text-align: center;
+  margin: 0;
+  width: calc(100% - 52px);
+  height: 42px;
+  border: 1px solid #aaaaaa;
 `;

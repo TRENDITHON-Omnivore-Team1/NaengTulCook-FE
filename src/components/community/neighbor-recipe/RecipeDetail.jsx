@@ -1,4 +1,5 @@
 import * as A from "./RecipeDetail.style";
+import defaultSvg from "@/assets/default-img/default_thumbnail.svg";
 import fireSvg from "@/assets/icons/recipe/icon_fire.svg";
 import clockSvg from "@/assets/icons/recipe/icon_clock.svg";
 import starSvg from "@/assets/icons/recipe/icon_star.svg";
@@ -12,7 +13,7 @@ export default function RecipeDetail() {
     <A.PageLayout>
       {/* 썸네일 */}
       <A.ImgContainer>
-        <A.ThumbnailImg src="http://test.api.weniv.co.kr/asset/img/7/thumbnailImg.jpg" alt="" />
+        <A.ThumbnailImg src={defaultSvg} />
         <A.OverlayGradation />
       </A.ImgContainer>
 
