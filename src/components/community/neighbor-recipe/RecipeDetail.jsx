@@ -6,7 +6,9 @@ import starSvg from "@/assets/icons/recipe/icon_star.svg";
 import starActiveSvg from "@/assets/icons/recipe/icon_star_active.svg";
 import { useState } from "react";
 
-export default function RecipeDetail() {
+export default function RecipeDetail({ data }) {
+  console.log(data);
+
   const [isScrap, setIsScrap] = useState(false);
 
   return (
@@ -57,24 +59,27 @@ export default function RecipeDetail() {
 
         {/* map 추가 */}
         <A.IngreContainer>
-          <p>양념</p>
+          <p>기본 재료</p>
           <A.IngreChipList>
-            <A.IngreChip>대파 2/1 개</A.IngreChip>
-            <A.IngreChip>대파 2/1 개</A.IngreChip>
+            {data?.ingredient.map((item, i) => (
+              <A.IngreChip key={i}>{item.name}</A.IngreChip>
+            ))}
           </A.IngreChipList>
         </A.IngreContainer>
         <A.IngreContainer>
           <p>양념</p>
           <A.IngreChipList>
-            <A.IngreChip>대파 2/1 개</A.IngreChip>
-            <A.IngreChip>대파 2/1 개</A.IngreChip>
+            {data?.seasoning.map((item, i) => (
+              <A.IngreChip key={i}>{item}</A.IngreChip>
+            ))}
           </A.IngreChipList>
         </A.IngreContainer>
         <A.IngreContainer>
-          <p>양념</p>
+          <p>도구</p>
           <A.IngreChipList>
-            <A.IngreChip>대파 2/1 개</A.IngreChip>
-            <A.IngreChip>대파 2/1 개</A.IngreChip>
+            {data?.tool.map((item, i) => (
+              <A.IngreChip key={i}>{item}</A.IngreChip>
+            ))}
           </A.IngreChipList>
         </A.IngreContainer>
       </A.IngreWrapper>
