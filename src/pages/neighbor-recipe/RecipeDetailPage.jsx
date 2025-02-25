@@ -1,5 +1,7 @@
+import { GetRecipeShare } from "@/apis/community/recipe-share/GetRecipeShare";
 import BigButton from "@/components/common/button/BigButton";
 import RecipeDetail from "@/components/community/neighbor-recipe/RecipeDetail";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -23,14 +25,30 @@ const GradationWhite = styled.div`
 export default function RecipeDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [data, setData] = useState();
 
   const handleMoveToCooking = () => {
     navigate(`/recipe/cooking?recipeName=${name}`); // id값 수정
   };
 
+  useEffect(() => {
+    GetRecipeShare;
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await GetRecipeShare({ postId: id });
+
+      setData(response);
+    };
+    if (id) {
+      fetchData();
+    }
+  }, [id]);
+
   return (
     <>
-      <RecipeDetail />
+      <RecipeDetail data={data} />
       <GradationWhite>
         <BigButton onClickFn={handleMoveToCooking} type="button" buttonText="요리하기" />
       </GradationWhite>

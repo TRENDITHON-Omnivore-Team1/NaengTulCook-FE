@@ -23,6 +23,7 @@ export default function RecipeStepC({ register, control, recipe }) {
       <A.IngreWrapper>
         {fields.map((field, index) => (
           <A.IngreTextInputList key={field.id}>
+            <A.IngreButtonImg src={removeSvg} onClick={() => handleRemove(index)} />
             <A.RecipeTextInput
               type="text"
               placeholder="재료 이름"
@@ -30,7 +31,6 @@ export default function RecipeStepC({ register, control, recipe }) {
                 required: "재료 이름을 입력해주세요.",
               })}
             />
-            <A.IngreButtonImg src={removeSvg} onClick={() => handleRemove(index)} />
           </A.IngreTextInputList>
         ))}
         <A.IngreButtonImg
