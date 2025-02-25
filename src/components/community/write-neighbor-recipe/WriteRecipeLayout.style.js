@@ -36,7 +36,7 @@ export const GradationWhite = styled.div`
   padding-bottom: 40px;
 
   width: 100%;
-  height: 160px;
+  height: 80px;
 
   display: flex;
   justify-content: center;

@@ -36,6 +36,7 @@ export default function WriteRecipeLayout() {
       ingredient: [{ name: "", amount: "" }],
       seasoning: [{ name: "", amount: "" }],
       tool: [{ name: "" }],
+      recipe: [{ name: "" }],
       file: [],
     },
   });
@@ -87,17 +88,25 @@ export default function WriteRecipeLayout() {
       type: "application/json",
     });
     formData.append("time", blobTime);
-    const blobIngredient = new Blob([JSON.stringify(["김치 200g", "밥 2공기"])], {
+
+    const ingredientsArr = data.ingredient.map((item) => `${item.name} ${item.amount}`);
+    const blobIngredient = new Blob([JSON.stringify(ingredientsArr)], {
       type: "application/json",
     });
     formData.append("ingredient", blobIngredient);
-    const blobSeasoning = new Blob([JSON.stringify(["간장 20g", "고추장 10g"])], {
+
+    const seasoningArr = data.seasoning.map((item) => `${item.name} ${item.amount}`);
+    const blobSeasoning = new Blob([JSON.stringify(seasoningArr)], {
       type: "application/json",
     });
     formData.append("seasoning", blobSeasoning);
-    const blobTool = new Blob([JSON.stringify(["프라이팬", "주걱"])], { type: "application/json" });
+
+    const toolArr = data.tool.map((item) => item.name);
+    const blobTool = new Blob([JSON.stringify(toolArr)], { type: "application/json" });
     formData.append("tool", blobTool);
-    const blobRecipe = new Blob([JSON.stringify(["김치를 볶는다.", "햄을 추가한다.", "완성~~"])], {
+
+    const recipeArr = data.recipe.map((item) => item.name);
+    const blobRecipe = new Blob([JSON.stringify(recipeArr)], {
       type: "application/json",
     });
     formData.append("recipe", blobRecipe);
@@ -128,6 +137,7 @@ export default function WriteRecipeLayout() {
     }
     await postApi(data);
     alert("요청 성공");
+    navigate("/community");
   };
 
   const handleButtonClick = async () => {

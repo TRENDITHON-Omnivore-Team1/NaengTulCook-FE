@@ -145,6 +145,7 @@ export const IngreWrapper = styled.div`
 `;
 export const IngreTextInputList = styled.div`
   ${RowCenterCSS}
+  justify-content: space-between;
   width: 100%;
   gap: 14px;
   margin: 12px 0;
@@ -154,7 +155,7 @@ export const IngreTextInput = styled.input`
   ${RowCenterCSS}
   text-align: center;
   margin: 0;
-  width: 108px;
+  width: calc((100% - 64px) / 2);
   height: 42px;
   border: 1px solid #aaaaaa;
 `;

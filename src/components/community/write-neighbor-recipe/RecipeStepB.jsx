@@ -62,6 +62,10 @@ export default function RecipeStepB({ register, control, ingredient, seasoning, 
       <A.IngreWrapper>
         {ingreFields.map((field, index) => (
           <A.IngreTextInputList key={field.id}>
+            <A.IngreButtonImg
+              src={removeSvg}
+              onClick={() => handleRemove(ingreRemove, ingreFields, index)}
+            />
             <A.IngreTextInput
               type="text"
               placeholder="재료 이름"
@@ -71,14 +75,10 @@ export default function RecipeStepB({ register, control, ingredient, seasoning, 
             />
             <A.IngreTextInput
               type="text"
-              placeholder="용량"
+              placeholder="용량과 단위"
               {...register(`ingredient.${index}.amount`, {
                 required: "용량을 입력해주세요.",
               })}
-            />
-            <A.IngreButtonImg
-              src={removeSvg}
-              onClick={() => handleRemove(ingreRemove, ingreFields, index)}
             />
           </A.IngreTextInputList>
         ))}
@@ -89,6 +89,10 @@ export default function RecipeStepB({ register, control, ingredient, seasoning, 
       <A.IngreWrapper>
         {seaFields.map((field, index) => (
           <A.IngreTextInputList key={field.id}>
+            <A.IngreButtonImg
+              src={removeSvg}
+              onClick={() => handleRemove(seaRemove, seaFields, index)}
+            />
             <A.IngreTextInput
               type="text"
               placeholder="재료 이름"
@@ -98,14 +102,10 @@ export default function RecipeStepB({ register, control, ingredient, seasoning, 
             />
             <A.IngreTextInput
               type="text"
-              placeholder="용량"
+              placeholder="용량과 단위"
               {...register(`seasoning.${index}.amount`, {
                 required: "용량을 입력해주세요.",
               })}
-            />
-            <A.IngreButtonImg
-              src={removeSvg}
-              onClick={() => handleRemove(seaRemove, seaFields, index)}
             />
           </A.IngreTextInputList>
         ))}
@@ -116,16 +116,16 @@ export default function RecipeStepB({ register, control, ingredient, seasoning, 
       <A.IngreWrapper>
         {toolFields.map((field, index) => (
           <A.IngreTextInputList key={field.id}>
-            <A.IngreTextInput
-              type="text"
-              placeholder="재료 이름"
-              {...register(`tool.${index}.name`, {
-                required: "재료 이름을 입력해주세요.",
-              })}
-            />
             <A.IngreButtonImg
               src={removeSvg}
               onClick={() => handleRemove(toolRemove, toolFields, index)}
+            />
+            <A.RecipeTextInput
+              type="text"
+              placeholder="도구 이름"
+              {...register(`tool.${index}.name`, {
+                required: "도구 이름을 입력해주세요.",
+              })}
             />
           </A.IngreTextInputList>
         ))}
