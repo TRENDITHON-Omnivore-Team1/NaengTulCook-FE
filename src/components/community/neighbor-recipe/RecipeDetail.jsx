@@ -5,11 +5,28 @@ import clockSvg from "@/assets/icons/recipe/icon_clock.svg";
 import starSvg from "@/assets/icons/recipe/icon_star.svg";
 import starActiveSvg from "@/assets/icons/recipe/icon_star_active.svg";
 import { useState } from "react";
+import { PostRecipeShare } from "@/apis/community/recipe-share/PostRecipeShare";
 
-export default function RecipeDetail({ data }) {
+export default function RecipeDetail({ data, postId }) {
+  const userId = localStorage.getItem("userId");
   console.log(data);
 
   const [isScrap, setIsScrap] = useState(false);
+  const [isDone, setIsDone] = useState(false);
+
+  const handleScrap = () => {
+    const fetchData = async () => {
+      await PostRecipeShare({
+        postId: postId,
+        userId: userId,
+      });
+    };
+    if (!isDone) {
+      fetchData();
+      setIsScrap(true);
+      setIsDone(true);
+    }
+  };
 
   return (
     <A.PageLayout>
@@ -38,7 +55,7 @@ export default function RecipeDetail({ data }) {
           </A.InfoChip>
         </A.ChipList>
 
-        <A.ScrapButton onClick={() => setIsScrap((prev) => !prev)} $isActive={isScrap}>
+        <A.ScrapButton onClick={handleScrap} $isActive={isScrap}>
           <img src={isScrap ? starActiveSvg : starSvg} alt="스크랩" />
           <span>스크랩</span>
         </A.ScrapButton>

@@ -48,7 +48,7 @@ export default function RecipeDetailPage() {
 
   return (
     <>
-      <RecipeDetail data={data} />
+      <RecipeDetail data={data} postId={id} />
       <GradationWhite>
         <BigButton onClickFn={handleMoveToCooking} type="button" buttonText="요리하기" />
       </GradationWhite>
