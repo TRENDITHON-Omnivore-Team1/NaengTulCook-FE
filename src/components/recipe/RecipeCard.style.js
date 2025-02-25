@@ -134,3 +134,10 @@ export const SliderContent = styled.li`
   height: calc(38vh + 247px + 96px);
   padding: 48px 14px 0px 14px;
 `;
+
+export const NoneText = styled.p`
+  margin-top: 32vh;
+  width: 100%;
+  text-align: center;
+  color: #aaa;
+`;

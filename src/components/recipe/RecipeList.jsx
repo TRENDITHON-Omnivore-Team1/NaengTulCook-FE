@@ -38,6 +38,7 @@ export default function RecipeList() {
 
   return (
     <A.SliderContainer>
+      {recipeData.length < 1 && <A.NoneText>냉장고에서 재료를 추가해보세요!</A.NoneText>}
       <Slider {...settings}>
         {recipeData.length > 0 &&
           recipeData.map((item, i) => (
