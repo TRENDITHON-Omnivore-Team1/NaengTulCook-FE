@@ -85,7 +85,7 @@ export default function CommunityPage() {
                 <br />
                 공유
               </Write>
-              <Write>
+              <Write onClick={() => navigate("/community/write-recipe")}>
                 레시피
                 <br />
                 공유
