@@ -77,6 +77,7 @@ export default function PreInfoLayout() {
     setIsButtonActive(false);
   }, [currentStep]);
 
+  // 드디어 api 요청
   const onSubmit = async (data) => {
     try {
       switch (currentStep) {
