@@ -76,7 +76,7 @@ export default function WriteRecipeLayout() {
     // 데이터 추가
     const blobUserId = new Blob([JSON.stringify(userId)], { type: "application/json" });
     formData.append("userId", blobUserId);
-    const blobTitle = new Blob([JSON.stringify(data.title)], { type: "application/json" });
+    const blobTitle = new Blob([data.title], { type: "application/json" });
     formData.append("title", blobTitle);
     const blobContent = new Blob([JSON.stringify(data.content)], { type: "application/json" });
     formData.append("content", blobContent);

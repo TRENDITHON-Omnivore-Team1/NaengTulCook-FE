@@ -26,7 +26,7 @@ export default function RecipeStepC({ register, control, recipe }) {
             <A.IngreButtonImg src={removeSvg} onClick={() => handleRemove(index)} />
             <A.RecipeTextInput
               type="text"
-              placeholder="재료 이름"
+              placeholder={`STEP 0${index + 1}`}
               {...register(`recipe.${index}.name`, {
                 required: "재료 이름을 입력해주세요.",
               })}

@@ -9,6 +9,7 @@ export default function NeighborRecipe() {
   const [data1, setData1] = useState(null);
   const [data2, setData2] = useState(null);
   const navigate = useNavigate();
+  console.log(data1); //삭제하기
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,7 +39,19 @@ export default function NeighborRecipe() {
             <S.CardWrapper>
               {data2.ageGroupRecommendations.map((d) => {
                 return (
-                  <S.CardContainer key={d.id} onClick={() => navigate(`/community/recipe/${d.id}`)}>
+                  <S.CardContainer
+                    key={d.id}
+                    onClick={() =>
+                      navigate(`/community/recipe/${d.id}`, {
+                        state: {
+                          picture: d.picture,
+                          title: d.title,
+                          likeCount: d.likeCount,
+                          userNickname: d.userNickname,
+                        },
+                      })
+                    }
+                  >
                     {d?.picture ? (
                       <S.CardImage
                         src={`http://13.211.69.139:8080${d.picture}`}
@@ -61,7 +74,19 @@ export default function NeighborRecipe() {
             <S.CardWrapper>
               {data2.familyTypeRecommendations.map((d) => {
                 return (
-                  <S.CardContainer key={d.id} onClick={() => navigate(`/community/recipe/${d.id}`)}>
+                  <S.CardContainer
+                    key={d.id}
+                    onClick={() =>
+                      navigate(`/community/recipe/${d.id}`, {
+                        state: {
+                          picture: d.picture,
+                          title: d.title,
+                          likeCount: d.likeCount,
+                          userNickname: d.userNickname,
+                        },
+                      })
+                    }
+                  >
                     {d?.picture ? (
                       <S.CardImage
                         src={`http://13.211.69.139:8080${d.picture}`}
@@ -88,9 +113,21 @@ export default function NeighborRecipe() {
           </S.TextFlex>
           <S.ColFlexContainer>
             {data1.map((d) => {
-              console.log(d.picture);
+              console.log("picture: ", d.picture);
               return (
-                <S.ColFlexItem key={d.id} onClick={() => navigate(`/community/recipe/${d.id}`)}>
+                <S.ColFlexItem
+                  key={d.id}
+                  onClick={() =>
+                    navigate(`/community/recipe/${d.id}`, {
+                      state: {
+                        picture: d.picture,
+                        title: d.title,
+                        likeCount: d.likeCount,
+                        userNickname: d.userNickname,
+                      },
+                    })
+                  }
+                >
                   {d?.picture ? (
                     <S.RoundImg src={`http://13.211.69.139:8080${d.picture}`} />
                   ) : (
