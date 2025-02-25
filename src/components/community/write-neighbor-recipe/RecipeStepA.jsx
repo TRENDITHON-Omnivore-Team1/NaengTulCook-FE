@@ -41,27 +41,23 @@ export default function RecipeStepA() {
 
     // 데이터 추가
     Object.entries(data).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        // // 배열 데이터를 JSON 문자열로 변환하여 하나의 값으로 보낸다.
-        const json = JSON.stringify(value);
-        const blob = new Blob([json], { type: "application/json" }); // MIME 타입을 application/json으로 지정
-        formData.append(key, blob);
-        // Blob 대신 JSON 문자열
-        // formData.append(key, JSON.stringify(value));
-        // // 삭제하기 --------------------------------
-        // console.log("key: ", key, "value", value);
-        // console.log("blob: ", blob); // 삭제하기
-        // console.log("formData: ", [...formData.entries()]); // 삭제하기
-        // // blob 확인용 // 삭제하기 --------------------------------
-        // const reader = new FileReader();
-        // reader.onload = (event) => {
-        //   console.log("blob(FileReader): ", event.target.result); // JSON 문자열 출력
-        // };
-        // reader.readAsText(blob);
-        // // 삭제하기 --------------------------------
-      } else {
-        formData.append(key, value);
-      }
+      // // 배열 데이터를 JSON 문자열로 변환하여 하나의 값으로 보낸다.
+      const json = JSON.stringify(value);
+      const blob = new Blob([json], { type: "application/json" }); // MIME 타입을 application/json으로 지정
+      formData.append(key, blob);
+      // Blob 대신 JSON 문자열
+      // formData.append(key, JSON.stringify(value));
+      // // 삭제하기 --------------------------------
+      // console.log("key: ", key, "value", value);
+      // console.log("blob: ", blob); // 삭제하기
+      // console.log("formData: ", [...formData.entries()]); // 삭제하기
+      // // blob 확인용 // 삭제하기 --------------------------------
+      // const reader = new FileReader();
+      // reader.onload = (event) => {
+      //   console.log("blob(FileReader): ", event.target.result); // JSON 문자열 출력
+      // };
+      // reader.readAsText(blob);
+      // // 삭제하기 --------------------------------
     });
 
     // 이미지 파일 추가
@@ -69,10 +65,10 @@ export default function RecipeStepA() {
       formData.append("file", file);
     }
 
-    // formData 확인용 // 삭제하기 --------------------------------
-    for (let pair of formData.entries()) {
-      console.log("formData 확인용: ", pair[0], pair[1]);
-    }
+    // // formData 확인용 // 삭제하기 --------------------------------
+    // for (let pair of formData.entries()) {
+    //   console.log("formData 확인용: ", pair[0], pair[1]);
+    // }
 
     // api 요청
     try {
