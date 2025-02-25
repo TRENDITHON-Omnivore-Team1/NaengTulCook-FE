@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import * as A from "./WriteRecipeLayout.style";
 import Topbar from "@/components/common/topbar/Topbar";
 import RecipeStepA from "./RecipeStepA";
 import RecipeStepB from "./RecipeStepB";
 import RecipeStepC from "./RecipeStepC";
 import { api } from "@/apis/api";
+import BigButton from "@/components/common/button/BigButton";
 
 const formNameList = [
   "title",
@@ -28,15 +29,43 @@ export default function WriteRecipeLayout() {
   const [currentStep, setCurrentStep] = useState(0);
   const navigate = useNavigate();
   // react-hook-form 설정
-  const { register, handleSubmit, control } = useForm({
+  const { register, handleSubmit, control, trigger } = useForm({
     defaultValues: {
       hour: 0,
       minute: 0,
       ingredient: [{ name: "", amount: "" }],
       seasoning: [{ name: "", amount: "" }],
       tool: [{ name: "" }],
+      file: [],
     },
   });
+  const watchFields = useWatch({
+    control,
+    name: [
+      "title",
+      "content",
+      "category",
+      "level",
+      "hour",
+      "minute",
+      "file",
+      "ingredient",
+      "seasoning",
+      "tool",
+      "recipe",
+    ],
+  });
+  const title = watchFields[0];
+  const content = watchFields[1];
+  const category = watchFields[2];
+  const level = watchFields[3];
+  const hour = watchFields[4];
+  const minute = watchFields[5];
+  const file = watchFields[6];
+  const ingredient = watchFields[7];
+  const seasoning = watchFields[8];
+  const tool = watchFields[9];
+  const recipe = watchFields[10];
 
   // api 요청 --------------------
   const postApi = async (data) => {
@@ -101,33 +130,82 @@ export default function WriteRecipeLayout() {
     alert("요청 성공");
   };
 
+  const handleButtonClick = async () => {
+    if (currentStep === 0) {
+      // 첫번째 스텝에 해당하는 필드들 검증: title, content, category, level, hour, minute, file
+      const valid = await trigger([
+        "title",
+        "content",
+        "category",
+        "level",
+        "hour",
+        "minute",
+        "file",
+      ]);
+      if (valid) {
+        setCurrentStep((prev) => prev + 1);
+      }
+    } else if (currentStep === 1) {
+      // 두번째 스텝에 해당하는 필드들 검증: ingredient, seasoning, tool
+      const valid = await trigger(["ingredient", "seasoning", "tool"]);
+      if (valid) {
+        setCurrentStep((prev) => prev + 1);
+      }
+    } else {
+      // 세번째 스텝: recipe 입력 검증 후 제출
+      const valid = await trigger("recipe");
+      if (valid) {
+        // handleSubmit returns a function which we immediately invoke
+        handleSubmit(onSubmit)();
+      }
+    }
+  };
+
   return (
-    <>
+    <A.PageWrapper>
       <Topbar pageTitle="레시피 공유" isSubPage={true} />
       {/* 상단 스텝 */}
 
       {/* 폼 내용 */}
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {currentStep == 0 ? (
-          <RecipeStepA register={register} />
-        ) : currentStep == 1 ? (
-          <RecipeStepB register={register} control={control} />
-        ) : (
-          <RecipeStepC register={register} />
-        )}
+      <A.InputForm onSubmit={handleSubmit(onSubmit)}>
+        <A.InputListWrapper>
+          {/* <br />
+          <br />
+          <br />
+          <button type="button" onClick={() => setCurrentStep((prev) => prev - 1)}>
+            이전
+          </button>
+          <button type="button" onClick={() => setCurrentStep((prev) => prev + 1)}>
+            다음
+          </button>
+          <button type="submit">제출!!</button> */}
+          {currentStep == 0 ? (
+            <RecipeStepA
+              register={register}
+              control={control}
+              title={title}
+              content={content}
+              category={category}
+              level={level}
+            />
+          ) : currentStep == 1 ? (
+            <RecipeStepB
+              register={register}
+              control={control}
+              ingredient={ingredient}
+              seasoning={seasoning}
+              tool={tool}
+            />
+          ) : (
+            <RecipeStepC register={register} control={control} recipe={recipe} />
+          )}
+        </A.InputListWrapper>
 
         {/* 버튼 */}
-        <br />
-        <br />
-        <br />
-        <button type="button" onClick={() => setCurrentStep((prev) => prev - 1)}>
-          이전
-        </button>
-        <button type="button" onClick={() => setCurrentStep((prev) => prev + 1)}>
-          다음
-        </button>
-        <button type="submit">제출!!</button>
-      </form>
-    </>
+        <A.GradationWhite>
+          <BigButton onClickFn={handleButtonClick} type="button" buttonText="다음" />
+        </A.GradationWhite>
+      </A.InputForm>
+    </A.PageWrapper>
   );
 }
