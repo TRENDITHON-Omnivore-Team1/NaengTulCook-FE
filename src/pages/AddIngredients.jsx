@@ -77,11 +77,11 @@ export default function AddIngredients() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = `http://13.211.69.139:8080/api/ingredients/${getLabel(selectedType)}`;
+        let url = `${import.meta.env.VITE_BASE_URL}/api/ingredients/${getLabel(selectedType)}`;
   
         // searchName이 비어있지 않다면 검색 API 사용
         if (searchName.trim() !== "") {
-          url = `http://13.211.69.139:8080/api/ingredients/searchByName?name=${searchName}`;
+          url = `${import.meta.env.VITE_BASE_URL}/api/ingredients/searchByName?name=${searchName}`;
         }
   
         const response = await axios.get(url);

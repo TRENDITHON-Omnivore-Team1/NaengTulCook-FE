@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://13.211.69.139:8080",
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
 
 const request = async ({ url, method, body, params, isIdRequired = true }) => {

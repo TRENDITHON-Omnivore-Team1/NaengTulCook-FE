@@ -34,10 +34,9 @@ export default function CommunityPostDetail() {
       type_ = type === "experience" ? "neighbor-experience" : "qna";
 
       await axios.post(
-        `http://13.211.69.139:8080/api/${type_}/posts/${id}/like?userId=${localStorage.getItem(
-          "userId"
-        )}`
+        `${import.meta.env.VITE_BASE_URL}/api/${type_}/posts/${id}/like?userId=${localStorage.getItem("userId")}`
       );
+      
       fetchData();
     } catch (err) {
       console.error("좋아요 실패:", err);
@@ -56,12 +55,16 @@ export default function CommunityPostDetail() {
       type_ = type === "experience" ? "neighbor-experience" : "qna";
 
       // console.log(id)
-      await axios.post(`http://13.211.69.139:8080/api/${type_}/posts/${id}/comments`, comment, {
-        headers: {
-          "Content-Type": "application/json", // 문자열을 JSON으로 전송하려면 명시적으로 지정
-        },
-        params: { userId: localStorage.getItem("userId") },
-      });
+      await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/${type_}/posts/${id}/comments`,
+        comment,
+        {
+          headers: {
+            "Content-Type": "application/json", // 문자열을 JSON으로 전송하려면 명시적으로 지정
+          },
+          params: { userId: localStorage.getItem("userId") },
+        }
+      );
       setComment("");
       fetchData(); // 댓글 등록 후 데이터를 다시 불러오기
     } catch (err) {
