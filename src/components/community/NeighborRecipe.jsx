@@ -54,7 +54,7 @@ export default function NeighborRecipe() {
                   >
                     {d?.picture ? (
                       <S.CardImage
-                        src={`http://13.211.69.139:8080${d.picture}`}
+                        src={`${import.meta.env.VITE_BASE_URL}${d.picture}`}
                         $width={119}
                         $height={194}
                       />
@@ -89,7 +89,7 @@ export default function NeighborRecipe() {
                   >
                     {d?.picture ? (
                       <S.CardImage
-                        src={`http://13.211.69.139:8080${d.picture}`}
+                        src={`${import.meta.env.VITE_BASE_URL}${d.picture}`}
                         $width={119}
                         $height={107}
                       />
@@ -129,7 +129,7 @@ export default function NeighborRecipe() {
                   }
                 >
                   {d?.picture ? (
-                    <S.RoundImg src={`http://13.211.69.139:8080${d.picture}`} />
+                    <S.RoundImg src={`${import.meta.env.VITE_BASE_URL}${d.picture}`} />
                   ) : (
                     <S.RoundImg src={defaultSvg} />
                   )}
